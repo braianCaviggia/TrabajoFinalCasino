@@ -1,0 +1,23 @@
+{
+  "name": "trabajofinalcasino",
+  "version": "1.0.0",
+  "description": "Trabajo final sobre un casino",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/braianCaviggia/TrabajoFinalCasino.git"
+  },
+  "author": "Augusto Amado - Dario Cabrera - Braian Caviggia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/braianCaviggia/TrabajoFinalCasino/issues"
+  },
+  "homepage": "https://github.com/braianCaviggia/TrabajoFinalCasino#readme",
+  "dependencies": {
+    "@types/readline-sync": "^1.4.8",
+    "readline-sync": "^1.4.10"
+  }
+}
