@@ -14,17 +14,18 @@ export class Usuario {
     this.nombre = rs.question("Ingresa tu nombre: ") 
     }
 
-    pedirEdad(){
-        this.edad = rs.questionInt("Ingresa tu edad: ") 
-         if (this.edad >= 18) {
-            console.log("Sos mayor de edad. Podes apostar") 
-            this.mostrarSaldo()
-            
-        } else {
-            console.log("Sos menor de edad. No podes apostar") 
+    public pedirEdad(){
+    try {
+        this.edad = rs.questionInt("Ingresa tu edad: ");
+        if (this.edad < 18) {
+            throw new Error("Sos menor de edad, las apuestas están prohibidas para ti");
         }
+    } catch (error) {
+        console.log(error.message); 
+    } if( this.edad >= 18){
+        this.mostrarSaldo()
     }
-
+    }
     mostrarSaldo() {
         console.log (`Bienvenido ${this.nombre}, tu monto de bienvenida es de $${this.saldo}.`)
     }
