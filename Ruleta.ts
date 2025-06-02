@@ -1,6 +1,7 @@
 import * as rs from "readline-sync"
+import { IJugar } from "./IJugar";
 
-export class Ruleta {
+export class Ruleta implements IJugar {
     private nombre: string
 
     constructor () {

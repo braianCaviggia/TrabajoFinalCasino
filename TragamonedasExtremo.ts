@@ -3,18 +3,18 @@ import { Tragamonedas } from "./Tragamonedas"
 import { Usuario } from "./Usuario"
 import * as rs from "readline-sync"
 
-export class TragamonedasBasico extends Tragamonedas implements IJugar{
-          protected montoMaximo: number
+export class TragamonedasExtremo extends Tragamonedas implements IJugar{
+      protected montoMinimo: number
       constructor() {
             super() 
-            this.montoMaximo = 2000
+            this.montoMinimo = 2000
       }
 
  apostar() {
 
     let montoApuesta = rs.questionInt("Ingrese el monto de apuesta: ")
 
-    if (montoApuesta <= this.montoMaximo) {
+    if (montoApuesta >= this.montoMinimo) {
     let girar = rs.question(`Ingrese "girar" para empezar a jugar: `).toLowerCase()
 
     if (girar === "girar") {
@@ -40,7 +40,7 @@ let resultado =   [tirarTragamoneda(this.simbolos),  //genero 3 veces un simbolo
         console.log("Tu giro no se hizo correctamente.")
     }
 } else {
-    console.log("El maximo de apuesta es de $2000. Si deseas apostar un valor mayor, ingresa al Tragamonedas Extremo (Opcion 4)")
+    console.log("El minimo de apuesta es de $2000. Si deseas apostar un valor menor, ingresa al Tragamonedas Basico (Opcion 3)")
 }
  }
 }

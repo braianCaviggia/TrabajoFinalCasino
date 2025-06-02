@@ -8,6 +8,12 @@ var Usuario = /** @class */ (function () {
         this.nombre = "";
         this.edad = 0;
     }
+    Usuario.prototype.getSaldo = function (pSaldo) {
+        return this.saldo;
+    };
+    Usuario.prototype.SetSaldo = function (nuevoSaldo) {
+        this.saldo = nuevoSaldo;
+    };
     Usuario.prototype.pedirNombre = function () {
         this.nombre = rs.question("Ingresa tu nombre: ");
     };

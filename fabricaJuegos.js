@@ -3,6 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.fabricaJuegos = void 0;
 var Ruleta_1 = require("./Ruleta");
 var rs = require("readline-sync");
+var TragamonedasBasico_1 = require("./TragamonedasBasico");
+var TragamonedasExtremo_1 = require("./TragamonedasExtremo");
 var fabricaJuegos = /** @class */ (function () {
     function fabricaJuegos() {
     }
@@ -20,8 +22,14 @@ var fabricaJuegos = /** @class */ (function () {
                 console.log("------SUERTE------");
                 return new Ruleta_1.Ruleta();
             // case 2 : return new Dados()
-            // case 3 : return new TragamonedasBasico()
-            // case 4 : return new TragamonedasExtremo()
+            case 3:
+                console.log("¡Ingresaste al Tragamonedas Basico!");
+                console.log("------SUERTE------");
+                return new TragamonedasBasico_1.TragamonedasBasico();
+            case 4:
+                console.log("¡Ingresaste al Tragamonedas Extremo!");
+                console.log("------SUERTE------");
+                return new TragamonedasExtremo_1.TragamonedasExtremo();
             default: return console.log("El juego no existe");
         }
     };

@@ -1,9 +1,13 @@
 import { Ruleta } from "./Ruleta"
+import { Tragamonedas } from "./Tragamonedas"
 import * as rs from "readline-sync"
+import { TragamonedasBasico } from "./TragamonedasBasico"
+import { TragamonedasExtremo } from "./TragamonedasExtremo"
+
 
 export class fabricaJuegos {
 mostrarJuegos() {
-    let listaJuegos = 
+    let listaJuegos =
                     console.log("Opcion 1: Ruleta") 
                     console.log("Opcion 2: Craps")
                     console.log("Opcion 3: Tragamonedas Basico")
@@ -17,8 +21,12 @@ jugar() {
                  console.log("------SUERTE------") 
         return new Ruleta()
         // case 2 : return new Dados()
-        // case 3 : return new TragamonedasBasico()
-        // case 4 : return new TragamonedasExtremo()
+         case 3 :  console.log("¡Ingresaste al Tragamonedas Basico!") 
+                 console.log("------SUERTE------")
+         return new TragamonedasBasico()
+        case 4 : console.log("¡Ingresaste al Tragamonedas Extremo!") 
+                 console.log("------SUERTE------")
+         return new TragamonedasExtremo()
         default : return console.log("El juego no existe")
     }
 }

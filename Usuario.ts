@@ -8,6 +8,15 @@ export class Usuario {
     constructor() {
         this.nombre = ""
         this.edad = 0
+
+    }
+
+    public getSaldo(pSaldo : number) {
+        return this.saldo
+    }
+
+    public SetSaldo (nuevoSaldo : number) {
+        this.saldo = nuevoSaldo
     }
 
     pedirNombre(){
@@ -29,6 +38,6 @@ export class Usuario {
     mostrarSaldo() {
         console.log (`Bienvenido ${this.nombre}, tu monto de bienvenida es de $${this.saldo}.`)
     }
-
     
+  
 }
