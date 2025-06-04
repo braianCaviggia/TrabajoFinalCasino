@@ -8,11 +8,17 @@ var Usuario = /** @class */ (function () {
         this.nombre = "";
         this.edad = 0;
     }
-    Usuario.prototype.getSaldo = function (pSaldo) {
+    Usuario.prototype.getSaldo = function () {
         return this.saldo;
     };
     Usuario.prototype.SetSaldo = function (nuevoSaldo) {
         this.saldo = nuevoSaldo;
+    };
+    Usuario.prototype.sumarSaldo = function (montoApuesta) {
+        this.saldo += montoApuesta;
+    };
+    Usuario.prototype.restarSaldo = function (montoApuesta) {
+        this.saldo -= montoApuesta;
     };
     Usuario.prototype.pedirNombre = function () {
         this.nombre = rs.question("Ingresa tu nombre: ");
@@ -20,8 +26,10 @@ var Usuario = /** @class */ (function () {
     Usuario.prototype.pedirEdad = function () {
         try {
             this.edad = rs.questionInt("Ingresa tu edad: ");
-            if (this.edad < 18) {
+            if (this.edad > 18) {
+                this.mostrarSaldo();
                 throw new Error("Sos menor de edad, las apuestas están prohibidas para ti");
+                return;
             }
         }
         catch (error) {

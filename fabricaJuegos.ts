@@ -3,6 +3,7 @@ import { Tragamonedas } from "./Tragamonedas"
 import * as rs from "readline-sync"
 import { TragamonedasBasico } from "./TragamonedasBasico"
 import { TragamonedasExtremo } from "./TragamonedasExtremo"
+import { JuegoDados } from "./JuegoDados"
 
 
 export class fabricaJuegos {
@@ -17,17 +18,29 @@ mostrarJuegos() {
 jugar() {
     let elegir = rs.questionInt("Ingresa el numero del juego que desees: ")
     switch (elegir) {
-        case 1 : console.log("¡Ingresaste a la ruleta!") 
-                 console.log("------SUERTE------") 
-        return new Ruleta()
-        // case 2 : return new Dados()
-         case 3 :  console.log("¡Ingresaste al Tragamonedas Basico!") 
-                 console.log("------SUERTE------")
-         return new TragamonedasBasico()
-        case 4 : console.log("¡Ingresaste al Tragamonedas Extremo!") 
-                 console.log("------SUERTE------")
-         return new TragamonedasExtremo()
-        default : return console.log("El juego no existe")
+        case 1 : 
+            console.log("¡Ingresaste a la ruleta!") 
+            console.log("------¡SUERTE!------") 
+            return new Ruleta()
+
+        case 2 : 
+            console.log("¡Ingresaste a Craps") 
+            console.log("------¡SUERTE!------") 
+            return new JuegoDados()
+
+         case 3 :  
+            console.log("¡Ingresaste al Tragamonedas Basico!") 
+            console.log("------¡SUERTE!------") 
+            return new TragamonedasBasico()
+
+        case 4 : 
+            console.log("¡Ingresaste al Tragamonedas Extremo!") 
+            console.log("------¡SUERTE!------") 
+            return new TragamonedasExtremo()
+
+        
+        
+        default : return console.log(`No existe juego en la opcion ${elegir}`)
     }
 }
 }

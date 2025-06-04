@@ -33,8 +33,13 @@ let resultado =   [tirarTragamoneda(this.simbolos),  //genero 3 veces un simbolo
 
     if (resultado[0] === resultado[1] && resultado[1] === resultado[2]) { //comparo los simbolos segun las posiciones 
         console.log("Ganaste")
+        this.usuario.sumarSaldo(montoApuesta)
+        this.usuario.mostrarSaldo()
+        
     } else {
         console.log("Perdiste")
+        this.usuario.restarSaldo(montoApuesta)
+        this.usuario.mostrarSaldo()
     }
     } else {
         console.log("Tu giro no se hizo correctamente.")

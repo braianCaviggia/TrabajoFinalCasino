@@ -5,6 +5,7 @@ var Ruleta_1 = require("./Ruleta");
 var rs = require("readline-sync");
 var TragamonedasBasico_1 = require("./TragamonedasBasico");
 var TragamonedasExtremo_1 = require("./TragamonedasExtremo");
+var JuegoDados_1 = require("./JuegoDados");
 var fabricaJuegos = /** @class */ (function () {
     function fabricaJuegos() {
     }
@@ -19,18 +20,21 @@ var fabricaJuegos = /** @class */ (function () {
         switch (elegir) {
             case 1:
                 console.log("¡Ingresaste a la ruleta!");
-                console.log("------SUERTE------");
+                console.log("------¡SUERTE!------");
                 return new Ruleta_1.Ruleta();
-            // case 2 : return new Dados()
+            case 2:
+                console.log("¡Ingresaste a Craps");
+                console.log("------¡SUERTE!------");
+                return new JuegoDados_1.JuegoDados();
             case 3:
                 console.log("¡Ingresaste al Tragamonedas Basico!");
-                console.log("------SUERTE------");
+                console.log("------¡SUERTE!------");
                 return new TragamonedasBasico_1.TragamonedasBasico();
             case 4:
                 console.log("¡Ingresaste al Tragamonedas Extremo!");
-                console.log("------SUERTE------");
+                console.log("------¡SUERTE!------");
                 return new TragamonedasExtremo_1.TragamonedasExtremo();
-            default: return console.log("El juego no existe");
+            default: return console.log("No existe juego en la opcion ".concat(elegir));
         }
     };
     return fabricaJuegos;

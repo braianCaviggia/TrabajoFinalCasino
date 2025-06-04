@@ -1,0 +1,63 @@
+import * as readlineSync from "readline-sync";
+
+export class JuegoDados {
+  private apuestaMinima: number = 100;
+
+  public apostar(): void {
+    const nombreJugador = readlineSync.question("Ingrese su nombre: ");
+    console.log(`¡Bienvenido al juego de dados, ${nombreJugador}!`);
+
+    const apuesta = readlineSync.questionInt("Ingrese el monto de su apuesta: ");
+
+    if (apuesta < this.apuestaMinima) {
+      console.log(`La apuesta mínima es ${this.apuestaMinima}. Apuesta no válida.`);
+      return;
+    }
+
+    const tipoApuesta = readlineSync.question("Queres apostar a 'numero' o 'par/impar'? ").toLowerCase();
+
+
+    let valorApuesta: number | "par" | "impar";
+    if (tipoApuesta === "numero") {
+      valorApuesta = readlineSync.questionInt("Elegí un número del 2 al 12: ");
+    } else if (tipoApuesta === "par" || tipoApuesta === "impar") {
+      valorApuesta = tipoApuesta;
+    } else {
+      console.log("Opción no válida. Se asumirá 'par' como apuesta.");
+      valorApuesta = "par";
+    }
+
+    const dado1 = Math.floor(Math.random() * 6) + 1;
+    const dado2 = Math.floor(Math.random() * 6) + 1;
+    const suma = dado1 + dado2;
+
+    console.log(`Resultado de los dados: ${dado1} + ${dado2} = ${suma}`);
+
+    let ganancia = 0;
+
+    if (tipoApuesta === "numero") {
+      if (valorApuesta === suma) {
+        ganancia = apuesta * 36;
+        console.log(`¡Adivinaste la suma exacta! Ganás $${ganancia}`);
+      } else {
+        console.log("No acertaste el número. Perdiste la apuesta.");
+      }
+    } else {
+      const esPar = suma % 2 === 0;
+      if ((valorApuesta === "par" && esPar) || (valorApuesta === "impar" && !esPar)) {
+        ganancia = apuesta * 2;
+        console.log(`¡Adivinaste par/impar! Ganás $${ganancia}`);
+      } else {
+        console.log("No acertaste par/impar. Perdiste la apuesta.");
+      }
+    }
+
+    if (ganancia > 0) {
+      console.log(`Ganaste $${ganancia}`);
+    } else {
+      console.log(`Perdiste $${apuesta}`);
+    }
+
+    console.log("Gracias por jugar");
+  }
+}

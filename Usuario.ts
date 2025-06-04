@@ -8,15 +8,23 @@ export class Usuario {
     constructor() {
         this.nombre = ""
         this.edad = 0
-
+        
     }
 
-    public getSaldo(pSaldo : number) {
+    public getSaldo() {
         return this.saldo
     }
 
     public SetSaldo (nuevoSaldo : number) {
         this.saldo = nuevoSaldo
+    }
+
+    public sumarSaldo(montoApuesta : number) {
+        this.saldo +=montoApuesta
+    }
+
+    public restarSaldo(montoApuesta : number) {
+        this.saldo -=montoApuesta
     }
 
     pedirNombre(){
@@ -26,7 +34,8 @@ export class Usuario {
     public pedirEdad(){
     try {
         this.edad = rs.questionInt("Ingresa tu edad: ");
-        if (this.edad < 18) {
+        if (this.edad > 18) {
+            this.mostrarSaldo()
             throw new Error("Sos menor de edad, las apuestas están prohibidas para ti");
         }
     } catch (error) {

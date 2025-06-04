@@ -3,10 +3,10 @@ import { Ruleta } from "./Ruleta";
 import { Tragamonedas } from "./Tragamonedas";
 import { fabricaJuegos } from "./fabricaJuegos";
 
-// let usuario = new Usuario()
+let usuario = new Usuario()
 
-// usuario.pedirNombre()
-// usuario.pedirEdad()
+usuario.pedirNombre()
+usuario.pedirEdad()
 
 // let ruleta = new Ruleta()
 
