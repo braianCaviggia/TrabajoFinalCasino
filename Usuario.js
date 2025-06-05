@@ -15,6 +15,9 @@ var Usuario = /** @class */ (function () {
     Usuario.prototype.SetSaldo = function (nuevoSaldo) {
         this.saldo = nuevoSaldo;
     };
+    Usuario.prototype.mostrarSaldo = function () {
+        console.log("Tu saldo actual es de ".concat(this.saldo));
+    };
     Usuario.prototype.sumarSaldo = function (montoApuesta) {
         this.saldo += montoApuesta;
     };
@@ -24,15 +27,16 @@ var Usuario = /** @class */ (function () {
     Usuario.prototype.pedirNombre = function () {
         this.nombre = rs.question("Ingresa tu nombre: ");
     };
-    Usuario.prototype.mostrarSaldo = function () {
+    Usuario.prototype.bienvenida = function () {
         console.log("Bienvenido ".concat(this.nombre, ", tu monto de bienvenida es de $").concat(this.saldo, "."));
     };
     Usuario.prototype.pedirEdad = function () {
+        var _this = this;
         this.edad = rs.questionInt("Ingresa tu edad: ");
-        if (this.edad > 18) {
-            this.mostrarSaldo();
+        if (this.edad >= 18) {
+            this.bienvenida();
             var jugarJuego = function () {
-                var juegos = new fabricaJuegos_1.fabricaJuegos(); //creo la fabrica de juegos en la variable "juegos"
+                var juegos = new fabricaJuegos_1.fabricaJuegos(_this); //creo la fabrica de juegos en la variable "juegos"
                 juegos.mostrarJuegos(); //muestro los juegos disponibles
                 var elegirJuego = juegos.jugar(); //en "jugar" guardo el juego que elija el usuario
                 if (elegirJuego) { //si la opcion elegida es correcta...

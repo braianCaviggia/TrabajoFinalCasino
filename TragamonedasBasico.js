@@ -20,8 +20,8 @@ var Tragamonedas_1 = require("./Tragamonedas");
 var rs = require("readline-sync");
 var TragamonedasBasico = /** @class */ (function (_super) {
     __extends(TragamonedasBasico, _super);
-    function TragamonedasBasico() {
-        var _this = _super.call(this) || this;
+    function TragamonedasBasico(usuario) {
+        var _this = _super.call(this, usuario) || this;
         _this.montoMaximo = 5000;
         return _this;
     }
@@ -43,9 +43,13 @@ var TragamonedasBasico = /** @class */ (function (_super) {
                 console.log(resultado.join("/")); //muestro el resultado con join para que quede como string y no como array    
                 if (resultado[0] === resultado[1] && resultado[1] === resultado[2]) { //comparo los simbolos segun las posiciones 
                     console.log("Ganaste");
+                    this.usuario.sumarSaldo(montoApuesta);
+                    this.usuario.mostrarSaldo();
                 }
                 else {
                     console.log("Perdiste");
+                    this.usuario.restarSaldo(montoApuesta);
+                    this.usuario.mostrarSaldo();
                 }
             }
             else {

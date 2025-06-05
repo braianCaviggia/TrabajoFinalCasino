@@ -7,7 +7,8 @@ var TragamonedasBasico_1 = require("./TragamonedasBasico");
 var TragamonedasExtremo_1 = require("./TragamonedasExtremo");
 var JuegoDados_1 = require("./JuegoDados");
 var fabricaJuegos = /** @class */ (function () {
-    function fabricaJuegos() {
+    function fabricaJuegos(usuario) {
+        this.usuario = usuario;
     }
     fabricaJuegos.prototype.mostrarJuegos = function () {
         var listaJuegos = console.log("Opcion 1: Ruleta");
@@ -21,19 +22,19 @@ var fabricaJuegos = /** @class */ (function () {
             case 1:
                 console.log("¡Ingresaste a la ruleta!");
                 console.log("------¡SUERTE!------");
-                return new Ruleta_1.Ruleta();
+                return new Ruleta_1.Ruleta(this.usuario);
             case 2:
                 console.log("¡Ingresaste a Craps");
                 console.log("------¡SUERTE!------");
-                return new JuegoDados_1.JuegoDados();
+                return new JuegoDados_1.JuegoDados(this.usuario);
             case 3:
                 console.log("¡Ingresaste al Tragamonedas Basico!");
                 console.log("------¡SUERTE!------");
-                return new TragamonedasBasico_1.TragamonedasBasico();
+                return new TragamonedasBasico_1.TragamonedasBasico(this.usuario);
             case 4:
                 console.log("¡Ingresaste al Tragamonedas Extremo!");
                 console.log("------¡SUERTE!------");
-                return new TragamonedasExtremo_1.TragamonedasExtremo();
+                return new TragamonedasExtremo_1.TragamonedasExtremo(this.usuario);
             default: return console.log("No existe juego en la opcion ".concat(elegir));
         }
     };

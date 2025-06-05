@@ -6,5 +6,9 @@ export class Tragamonedas {
        protected usuario : Usuario
        protected montoMinimo : number
        protected montoMaximo : number
+
+       constructor(pUsuario : Usuario) {
+              this.usuario = pUsuario
+       }
    
 }

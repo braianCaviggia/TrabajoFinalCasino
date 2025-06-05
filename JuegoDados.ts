@@ -1,11 +1,18 @@
 import * as readlineSync from "readline-sync";
+import { Usuario } from "./Usuario";
+import { IJugar } from "./IJugar";
 
-export class JuegoDados {
-  private apuestaMinima: number = 100;
+export class JuegoDados implements IJugar  {
+  private apuestaMinima: number = 500
+  private usuario : Usuario
+  constructor(usuario : Usuario) {
+            this.usuario = usuario
+            this.apuestaMinima = 100
+      }
 
   public apostar(): void {
-    const nombreJugador = readlineSync.question("Ingrese su nombre: ");
-    console.log(`¡Bienvenido al juego de dados, ${nombreJugador}!`);
+    // const nombreJugador = readlineSync.question("Ingrese su nombre: ");
+    // console.log(`¡Bienvenido al juego de dados, ${nombreJugador}!`);
 
     const apuesta = readlineSync.questionInt("Ingrese el monto de su apuesta: ");
 
@@ -33,30 +40,39 @@ export class JuegoDados {
 
     console.log(`Resultado de los dados: ${dado1} + ${dado2} = ${suma}`);
 
-    let ganancia = 0;
+    // let ganancia = 0;
 
     if (tipoApuesta === "numero") {
       if (valorApuesta === suma) {
-        ganancia = apuesta * 36;
-        console.log(`¡Adivinaste la suma exacta! Ganás $${ganancia}`);
+        // ganancia = apuesta * 36;
+        console.log(`¡Adivinaste la suma exacta!`);
+         this.usuario.sumarSaldo(apuesta)
+        this.usuario.mostrarSaldo()
       } else {
         console.log("No acertaste el número. Perdiste la apuesta.");
+        this.usuario.restarSaldo(apuesta)
+        this.usuario.mostrarSaldo()
       }
     } else {
       const esPar = suma % 2 === 0;
       if ((valorApuesta === "par" && esPar) || (valorApuesta === "impar" && !esPar)) {
-        ganancia = apuesta * 2;
-        console.log(`¡Adivinaste par/impar! Ganás $${ganancia}`);
+        // ganancia = apuesta * 2;
+        console.log(`¡Adivinaste par/impar!`);
+                 this.usuario.sumarSaldo(apuesta)
+        this.usuario.mostrarSaldo()
+
       } else {
         console.log("No acertaste par/impar. Perdiste la apuesta.");
+         this.usuario.restarSaldo(apuesta)
+        this.usuario.mostrarSaldo()
       }
     }
 
-    if (ganancia > 0) {
-      console.log(`Ganaste $${ganancia}`);
-    } else {
-      console.log(`Perdiste $${apuesta}`);
-    }
+    // if (ganancia > 0) {
+    //   console.log(`Ganaste $${ganancia}`);
+    // } else {
+    //   console.log(`Perdiste $${apuesta}`);
+    // }
 
     console.log("Gracias por jugar");
   }

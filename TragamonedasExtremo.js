@@ -20,8 +20,8 @@ var Tragamonedas_1 = require("./Tragamonedas");
 var rs = require("readline-sync");
 var TragamonedasExtremo = /** @class */ (function (_super) {
     __extends(TragamonedasExtremo, _super);
-    function TragamonedasExtremo() {
-        var _this = _super.call(this) || this;
+    function TragamonedasExtremo(usuario) {
+        var _this = _super.call(this, usuario) || this;
         _this.montoMinimo = 5000;
         return _this;
     }

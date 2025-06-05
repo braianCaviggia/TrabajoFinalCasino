@@ -20,6 +20,10 @@ export class Usuario {
         this.saldo = nuevoSaldo
     }
 
+    public mostrarSaldo() {
+        console.log(`Tu saldo actual es de ${this.saldo}`)
+    }
+
     public sumarSaldo(montoApuesta : number) {
         this.saldo +=montoApuesta
     }
@@ -32,17 +36,17 @@ export class Usuario {
     this.nombre = rs.question("Ingresa tu nombre: ") 
     }
 
-        mostrarSaldo() {
+        bienvenida() {
         console.log (`Bienvenido ${this.nombre}, tu monto de bienvenida es de $${this.saldo}.`)
     }
 
 
     public pedirEdad() {
             this.edad = rs.questionInt ("Ingresa tu edad: ")
-            if (this.edad > 18) {
-               this.mostrarSaldo()
+            if (this.edad >= 18) {
+               this.bienvenida()
                let jugarJuego = () => {
-let juegos = new fabricaJuegos() //creo la fabrica de juegos en la variable "juegos"
+let juegos = new fabricaJuegos(this) //creo la fabrica de juegos en la variable "juegos"
 
 juegos.mostrarJuegos() //muestro los juegos disponibles
 

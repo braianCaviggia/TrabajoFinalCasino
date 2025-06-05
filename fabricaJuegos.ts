@@ -4,9 +4,17 @@ import * as rs from "readline-sync"
 import { TragamonedasBasico } from "./TragamonedasBasico"
 import { TragamonedasExtremo } from "./TragamonedasExtremo"
 import { JuegoDados } from "./JuegoDados"
+import { Usuario } from "./Usuario"
 
 
 export class fabricaJuegos {
+
+     private usuario : Usuario
+
+     constructor(usuario : Usuario) {
+        this.usuario = usuario
+     }
+
 mostrarJuegos() {
     let listaJuegos =
                     console.log("Opcion 1: Ruleta") 
@@ -21,22 +29,22 @@ jugar() {
         case 1 : 
             console.log("¡Ingresaste a la ruleta!") 
             console.log("------¡SUERTE!------") 
-            return new Ruleta()
+            return new Ruleta(this.usuario)
 
         case 2 : 
             console.log("¡Ingresaste a Craps") 
             console.log("------¡SUERTE!------") 
-            return new JuegoDados()
+            return new JuegoDados(this.usuario)
 
          case 3 :  
             console.log("¡Ingresaste al Tragamonedas Basico!") 
             console.log("------¡SUERTE!------") 
-            return new TragamonedasBasico()
+            return new TragamonedasBasico(this.usuario)
 
         case 4 : 
             console.log("¡Ingresaste al Tragamonedas Extremo!") 
             console.log("------¡SUERTE!------") 
-            return new TragamonedasExtremo()
+            return new TragamonedasExtremo(this.usuario)
 
         
         

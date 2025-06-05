@@ -3,12 +3,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.JuegoDados = void 0;
 var readlineSync = require("readline-sync");
 var JuegoDados = /** @class */ (function () {
-    function JuegoDados() {
+    function JuegoDados(usuario) {
+        this.apuestaMinima = 500;
+        this.usuario = usuario;
         this.apuestaMinima = 100;
     }
     JuegoDados.prototype.apostar = function () {
-        var nombreJugador = readlineSync.question("Ingrese su nombre: ");
-        console.log("\u00A1Bienvenido al juego de dados, ".concat(nombreJugador, "!"));
+        // const nombreJugador = readlineSync.question("Ingrese su nombre: ");
+        // console.log(`¡Bienvenido al juego de dados, ${nombreJugador}!`);
         var apuesta = readlineSync.questionInt("Ingrese el monto de su apuesta: ");
         if (apuesta < this.apuestaMinima) {
             console.log("La apuesta m\u00EDnima es ".concat(this.apuestaMinima, ". Apuesta no v\u00E1lida."));
@@ -30,32 +32,39 @@ var JuegoDados = /** @class */ (function () {
         var dado2 = Math.floor(Math.random() * 6) + 1;
         var suma = dado1 + dado2;
         console.log("Resultado de los dados: ".concat(dado1, " + ").concat(dado2, " = ").concat(suma));
-        var ganancia = 0;
+        // let ganancia = 0;
         if (tipoApuesta === "numero") {
             if (valorApuesta === suma) {
-                ganancia = apuesta * 36;
-                console.log("\u00A1Adivinaste la suma exacta! Gan\u00E1s $".concat(ganancia));
+                // ganancia = apuesta * 36;
+                console.log("\u00A1Adivinaste la suma exacta!");
+                this.usuario.sumarSaldo(apuesta);
+                this.usuario.mostrarSaldo();
             }
             else {
                 console.log("No acertaste el número. Perdiste la apuesta.");
+                this.usuario.restarSaldo(apuesta);
+                this.usuario.mostrarSaldo();
             }
         }
         else {
             var esPar = suma % 2 === 0;
             if ((valorApuesta === "par" && esPar) || (valorApuesta === "impar" && !esPar)) {
-                ganancia = apuesta * 2;
-                console.log("\u00A1Adivinaste par/impar! Gan\u00E1s $".concat(ganancia));
+                // ganancia = apuesta * 2;
+                console.log("\u00A1Adivinaste par/impar!");
+                this.usuario.sumarSaldo(apuesta);
+                this.usuario.mostrarSaldo();
             }
             else {
                 console.log("No acertaste par/impar. Perdiste la apuesta.");
+                this.usuario.restarSaldo(apuesta);
+                this.usuario.mostrarSaldo();
             }
         }
-        if (ganancia > 0) {
-            console.log("Ganaste $".concat(ganancia));
-        }
-        else {
-            console.log("Perdiste $".concat(apuesta));
-        }
+        // if (ganancia > 0) {
+        //   console.log(`Ganaste $${ganancia}`);
+        // } else {
+        //   console.log(`Perdiste $${apuesta}`);
+        // }
         console.log("Gracias por jugar");
     };
     return JuegoDados;

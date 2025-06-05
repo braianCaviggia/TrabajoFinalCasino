@@ -5,8 +5,8 @@ import * as rs from "readline-sync"
 
 export class TragamonedasExtremo extends Tragamonedas implements IJugar{
       protected montoMinimo: number
-      constructor() {
-            super() 
+      constructor(usuario : Usuario) {
+            super(usuario) 
             this.montoMinimo = 5000
       }
 
