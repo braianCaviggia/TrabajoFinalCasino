@@ -12,20 +12,20 @@ usuario.pedirEdad()
 
 // ruleta.apostar()
 
-let jugarJuego = () => {
-let juegos = new fabricaJuegos() //creo la fabrica de juegos en la variable "juegos"
+// let jugarJuego = () => {
+// let juegos = new fabricaJuegos() //creo la fabrica de juegos en la variable "juegos"
 
-juegos.mostrarJuegos() //muestro los juegos disponibles
+// juegos.mostrarJuegos() //muestro los juegos disponibles
 
-let elegirJuego = juegos.jugar() //en "jugar" guardo el juego que elija el usuario
+// let elegirJuego = juegos.jugar() //en "jugar" guardo el juego que elija el usuario
 
 
-if (elegirJuego) {  //si la opcion elegida es correcta...
-    elegirJuego.apostar() //ejecuta la funcion de apostar
-}
-}
+// if (elegirJuego) {  //si la opcion elegida es correcta...
+//     elegirJuego.apostar() //ejecuta la funcion de apostar
+// }
+// }
 
-jugarJuego() 
+// jugarJuego() 
 
 // let tragamonedas = new TragamonedasBasico()
 

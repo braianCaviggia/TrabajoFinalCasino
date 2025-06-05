@@ -22,7 +22,7 @@ var TragamonedasBasico = /** @class */ (function (_super) {
     __extends(TragamonedasBasico, _super);
     function TragamonedasBasico() {
         var _this = _super.call(this) || this;
-        _this.montoMaximo = 2000;
+        _this.montoMaximo = 5000;
         return _this;
     }
     TragamonedasBasico.prototype.apostar = function () {

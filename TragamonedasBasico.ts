@@ -7,7 +7,7 @@ export class TragamonedasBasico extends Tragamonedas implements IJugar{
           protected montoMaximo: number
       constructor() {
             super() 
-            this.montoMaximo = 2000
+            this.montoMaximo = 5000
       }
 
  apostar() {

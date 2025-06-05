@@ -7,7 +7,7 @@ export class TragamonedasExtremo extends Tragamonedas implements IJugar{
       protected montoMinimo: number
       constructor() {
             super() 
-            this.montoMinimo = 2000
+            this.montoMinimo = 5000
       }
 
  apostar() {
