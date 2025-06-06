@@ -20,7 +20,7 @@ export class Usuario {
         this.saldo = nuevoSaldo
     }
 
-    public mostrarSaldo() {
+    public mostrarSaldo()  {
         console.log(`Tu saldo actual es de ${this.saldo}`)
     }
 
@@ -37,7 +37,7 @@ export class Usuario {
     }
 
         bienvenida() {
-        console.log (`Bienvenido ${this.nombre}, tu monto de bienvenida es de $${this.saldo}.`)
+        console.log (`Bienvenido ${this.nombre}, tu bono de bienvenida es de $${this.saldo}.`)
     }
 
 

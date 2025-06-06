@@ -28,7 +28,7 @@ var Usuario = /** @class */ (function () {
         this.nombre = rs.question("Ingresa tu nombre: ");
     };
     Usuario.prototype.bienvenida = function () {
-        console.log("Bienvenido ".concat(this.nombre, ", tu monto de bienvenida es de $").concat(this.saldo, "."));
+        console.log("Bienvenido ".concat(this.nombre, ", tu bono de bienvenida es de $").concat(this.saldo, "."));
     };
     Usuario.prototype.pedirEdad = function () {
         var _this = this;

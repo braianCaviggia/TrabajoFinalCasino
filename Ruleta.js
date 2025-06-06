@@ -4,8 +4,9 @@ exports.Ruleta = void 0;
 var rs = require("readline-sync");
 var Ruleta = /** @class */ (function () {
     function Ruleta(usuario) {
+        // private nombre: string
         this.apuestaMinima = 500;
-        this.nombre = "Ruleta - Altos y bajos";
+        // this.nombre = "Ruleta - Altos y bajos"
         this.usuario = usuario;
     }
     Ruleta.prototype.numeroAzar = function (min, max) {

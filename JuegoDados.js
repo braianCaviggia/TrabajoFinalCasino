@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.JuegoDados = void 0;
 var readlineSync = require("readline-sync");
+var fs = require("fs");
 var JuegoDados = /** @class */ (function () {
     function JuegoDados(usuario) {
         this.apuestaMinima = 500;
@@ -11,6 +12,10 @@ var JuegoDados = /** @class */ (function () {
     JuegoDados.prototype.apostar = function () {
         // const nombreJugador = readlineSync.question("Ingrese su nombre: ");
         // console.log(`¡Bienvenido al juego de dados, ${nombreJugador}!`);
+        //CREAR TXT:
+        // let saldo : number= 100
+        // let mostrarSaldo : string = `el saldo final es ${saldo}`
+        // fs.writeFileSync(`saldo.txt`, mostrarSaldo)
         var apuesta = readlineSync.questionInt("Ingrese el monto de su apuesta: ");
         if (apuesta < this.apuestaMinima) {
             console.log("La apuesta m\u00EDnima es ".concat(this.apuestaMinima, ". Apuesta no v\u00E1lida."));
@@ -32,7 +37,6 @@ var JuegoDados = /** @class */ (function () {
         var dado2 = Math.floor(Math.random() * 6) + 1;
         var suma = dado1 + dado2;
         console.log("Resultado de los dados: ".concat(dado1, " + ").concat(dado2, " = ").concat(suma));
-        // let ganancia = 0;
         if (tipoApuesta === "numero") {
             if (valorApuesta === suma) {
                 // ganancia = apuesta * 36;
@@ -60,6 +64,9 @@ var JuegoDados = /** @class */ (function () {
                 this.usuario.mostrarSaldo();
             }
         }
+        var saldoTotal = this.usuario.getSaldo();
+        var saldoFinal = "Tu saldo final luego de jugar en los Craps es de ".concat(saldoTotal);
+        fs.writeFileSync("saldoFinalCraps.txt", saldoFinal);
         // if (ganancia > 0) {
         //   console.log(`Ganaste $${ganancia}`);
         // } else {

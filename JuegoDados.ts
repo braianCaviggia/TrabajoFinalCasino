@@ -1,4 +1,5 @@
 import * as readlineSync from "readline-sync";
+import * as fs from 'fs';
 import { Usuario } from "./Usuario";
 import { IJugar } from "./IJugar";
 
@@ -10,11 +11,20 @@ export class JuegoDados implements IJugar  {
             this.apuestaMinima = 100
       }
 
+
   public apostar(): void {
     // const nombreJugador = readlineSync.question("Ingrese su nombre: ");
     // console.log(`¡Bienvenido al juego de dados, ${nombreJugador}!`);
 
+
+       //CREAR TXT:
+    // let saldo : number= 100
+    // let mostrarSaldo : string = `el saldo final es ${saldo}`
+
+    // fs.writeFileSync(`saldo.txt`, mostrarSaldo)
+
     const apuesta = readlineSync.questionInt("Ingrese el monto de su apuesta: ");
+
 
     if (apuesta < this.apuestaMinima) {
       console.log(`La apuesta mínima es ${this.apuestaMinima}. Apuesta no válida.`);
@@ -40,14 +50,13 @@ export class JuegoDados implements IJugar  {
 
     console.log(`Resultado de los dados: ${dado1} + ${dado2} = ${suma}`);
 
-    // let ganancia = 0;
-
     if (tipoApuesta === "numero") {
       if (valorApuesta === suma) {
         // ganancia = apuesta * 36;
         console.log(`¡Adivinaste la suma exacta!`);
          this.usuario.sumarSaldo(apuesta)
-        this.usuario.mostrarSaldo()
+         this.usuario.mostrarSaldo()
+
       } else {
         console.log("No acertaste el número. Perdiste la apuesta.");
         this.usuario.restarSaldo(apuesta)
@@ -58,7 +67,7 @@ export class JuegoDados implements IJugar  {
       if ((valorApuesta === "par" && esPar) || (valorApuesta === "impar" && !esPar)) {
         // ganancia = apuesta * 2;
         console.log(`¡Adivinaste par/impar!`);
-                 this.usuario.sumarSaldo(apuesta)
+        this.usuario.sumarSaldo(apuesta)
         this.usuario.mostrarSaldo()
 
       } else {
@@ -66,7 +75,12 @@ export class JuegoDados implements IJugar  {
          this.usuario.restarSaldo(apuesta)
         this.usuario.mostrarSaldo()
       }
-    }
+    } 
+
+    let saldoTotal : number = this.usuario.getSaldo()
+    let saldoFinal : string = `Tu saldo final luego de jugar en los Craps es de ${saldoTotal}`
+
+    fs.writeFileSync(`saldoFinalCraps.txt`,saldoFinal)
 
     // if (ganancia > 0) {
     //   console.log(`Ganaste $${ganancia}`);
