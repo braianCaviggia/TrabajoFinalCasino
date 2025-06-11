@@ -2,12 +2,14 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Usuario = void 0;
 var rs = require("readline-sync");
+var fs = require("fs");
 var fabricaJuegos_1 = require("./fabricaJuegos");
 var Usuario = /** @class */ (function () {
     function Usuario() {
-        this.saldo = 2000;
+        this.bonoBienvenida = 2000;
         this.nombre = "";
         this.edad = 0;
+        this.saldo = 2000;
     }
     Usuario.prototype.getSaldo = function () {
         return this.saldo;
@@ -28,7 +30,7 @@ var Usuario = /** @class */ (function () {
         this.nombre = rs.question("Ingresa tu nombre: ");
     };
     Usuario.prototype.bienvenida = function () {
-        console.log("Bienvenido ".concat(this.nombre, ", tu bono de bienvenida es de $").concat(this.saldo, "."));
+        console.log("Bienvenido ".concat(this.nombre, ", tu bono de bienvenida es de ").concat(this.bonoBienvenida, "."));
     };
     Usuario.prototype.pedirEdad = function () {
         var _this = this;
@@ -44,12 +46,57 @@ var Usuario = /** @class */ (function () {
                 }
             };
             jugarJuego();
-        }
-        else {
-            console.log("Sos menor de edad, las apuestas están prohibidas para ti");
-            return;
+            var salir = false;
+            while (!salir) {
+                var mostrarMenu = console.log("VOLVIENDO AL MENU...");
+                console.log("---MENÚ DE OPCIONES---");
+                console.log("1. Mostrar menu de juegos");
+                console.log("2. Consultar saldo");
+                console.log("3. Salir del casino");
+                var preguntarUsuario = rs.questionInt("Ingresa la opcion que desees: ");
+                switch (preguntarUsuario) {
+                    case 1:
+                        jugarJuego();
+                        break;
+                    case 2:
+                        this.mostrarSaldo();
+                        jugarJuego();
+                        break;
+                    case 3:
+                        salir = true;
+                        var saldoFinal = "Tu saldo final luego de jugar es de ".concat(this.saldo);
+                        fs.writeFileSync("saldoFinalUsuario.txt", saldoFinal);
+                        console.log("Muchas gracias por jugar ".concat(this.nombre, ". Tu saldo final es de ").concat(this.saldo, " \u00A1Hasta la proxima!"));
+                        break;
+                    default:
+                        console.log("No esta disponible esa opcion. Te volvemos a mostrar las opciones para que vuelvas a elegir.");
+                        jugarJuego();
+                        break;
+                }
+            }
         }
     };
     return Usuario;
 }());
 exports.Usuario = Usuario;
+// mostrarMenu() {
+// let mostrarMenu = console.log("---MENÚ DE OPCIONES---")
+//                   console.log("1. Mostrar menu de juegos")
+//                   console.log("2. Salir del casino")
+// let preguntarUsuario = rs.questionInt("Ingresa la opcion que desees: ")
+// switch(preguntarUsuario) {
+//     case 1: jugarJuego()
+// }
+// }
+// public pedirEdad(){
+// try {
+//     this.edad = rs.questionInt("Ingresa tu edad: ");
+//     if (this.edad < 18) {
+//         throw new Error("Sos menor de edad, las apuestas están prohibidas para ti");
+//     }
+// } catch (error) {
+//     console.log(error.message); 
+// } if( this.edad >= 18){
+//     this.mostrarSaldo()
+// }
+// }  

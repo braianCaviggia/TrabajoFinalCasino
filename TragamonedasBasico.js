@@ -22,12 +22,12 @@ var TragamonedasBasico = /** @class */ (function (_super) {
     __extends(TragamonedasBasico, _super);
     function TragamonedasBasico(usuario) {
         var _this = _super.call(this, usuario) || this;
-        _this.montoMaximo = 5000;
+        _this.montoMaximo = 1500;
         return _this;
     }
     TragamonedasBasico.prototype.apostar = function () {
         var _this = this;
-        var montoApuesta = rs.questionInt("Ingrese el monto de apuesta: ");
+        var montoApuesta = rs.questionInt("Ingrese el monto de apuesta(Minimo $100 - Maximo $1500): ");
         if (montoApuesta >= 100 && montoApuesta <= this.montoMaximo) {
             var girar = rs.question("Ingrese \"girar\" para empezar a jugar: ").toLowerCase();
             if (girar === "girar") {
@@ -44,12 +44,10 @@ var TragamonedasBasico = /** @class */ (function (_super) {
                 if (resultado[0] === resultado[1] && resultado[1] === resultado[2]) { //comparo los simbolos segun las posiciones 
                     console.log("Ganaste");
                     this.usuario.sumarSaldo(montoApuesta);
-                    this.usuario.mostrarSaldo();
                 }
                 else {
                     console.log("Perdiste");
                     this.usuario.restarSaldo(montoApuesta);
-                    this.usuario.mostrarSaldo();
                 }
             }
             else {
@@ -57,7 +55,7 @@ var TragamonedasBasico = /** @class */ (function (_super) {
             }
         }
         else {
-            console.log("El valor minimo de apuesta es 100 y el maximo de apuesta es de $2000. Si deseas apostar un valor mayor, ingresa al Tragamonedas Extremo (Opcion 4)");
+            console.log("El valor minimo de apuesta es 100 y el maximo de apuesta es de $1500. Si deseas apostar un valor mayor, ingresa al Tragamonedas Extremo (Opcion 4)");
         }
     };
     return TragamonedasBasico;

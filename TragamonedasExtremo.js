@@ -22,12 +22,12 @@ var TragamonedasExtremo = /** @class */ (function (_super) {
     __extends(TragamonedasExtremo, _super);
     function TragamonedasExtremo(usuario) {
         var _this = _super.call(this, usuario) || this;
-        _this.montoMinimo = 5000;
+        _this.montoMinimo = 1500;
         return _this;
     }
     TragamonedasExtremo.prototype.apostar = function () {
         var _this = this;
-        var montoApuesta = rs.questionInt("Ingrese el monto de apuesta: ");
+        var montoApuesta = rs.questionInt("Ingrese el monto de apuesta (Minimo $1500): ");
         if (montoApuesta >= this.montoMinimo) {
             var girar = rs.question("Ingrese \"girar\" para empezar a jugar: ").toLowerCase();
             if (girar === "girar") {
@@ -44,12 +44,10 @@ var TragamonedasExtremo = /** @class */ (function (_super) {
                 if (resultado[0] === resultado[1] && resultado[1] === resultado[2]) { //comparo los simbolos segun las posiciones 
                     console.log("Ganaste");
                     this.usuario.sumarSaldo(montoApuesta);
-                    this.usuario.mostrarSaldo();
                 }
                 else {
                     console.log("Perdiste");
                     this.usuario.restarSaldo(montoApuesta);
-                    this.usuario.mostrarSaldo();
                 }
             }
             else {
@@ -57,7 +55,7 @@ var TragamonedasExtremo = /** @class */ (function (_super) {
             }
         }
         else {
-            console.log("El minimo de apuesta es de $2000. Si deseas apostar un valor menor, ingresa al Tragamonedas Basico (Opcion 3)");
+            console.log("El minimo de apuesta es de $1500. Si deseas apostar un valor menor, ingresa al Tragamonedas Basico (Opcion 3)");
         }
     };
     return TragamonedasExtremo;

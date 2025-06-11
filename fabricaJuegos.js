@@ -20,18 +20,22 @@ var fabricaJuegos = /** @class */ (function () {
         var elegir = rs.questionInt("Ingresa el numero del juego que desees: ");
         switch (elegir) {
             case 1:
+                console.log("------INGRESANDO------");
                 console.log("¡Ingresaste a la ruleta!");
                 console.log("------¡SUERTE!------");
                 return new Ruleta_1.Ruleta(this.usuario);
             case 2:
+                console.log("------INGRESANDO------");
                 console.log("¡Ingresaste a Craps");
                 console.log("------¡SUERTE!------");
                 return new JuegoDados_1.JuegoDados(this.usuario);
             case 3:
+                console.log("------INGRESANDO------");
                 console.log("¡Ingresaste al Tragamonedas Basico!");
                 console.log("------¡SUERTE!------");
                 return new TragamonedasBasico_1.TragamonedasBasico(this.usuario);
             case 4:
+                console.log("------INGRESANDO------");
                 console.log("¡Ingresaste al Tragamonedas Extremo!");
                 console.log("------¡SUERTE!------");
                 return new TragamonedasExtremo_1.TragamonedasExtremo(this.usuario);

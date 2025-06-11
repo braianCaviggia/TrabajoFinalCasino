@@ -8,7 +8,7 @@ export class JuegoDados implements IJugar  {
   private usuario : Usuario
   constructor(usuario : Usuario) {
             this.usuario = usuario
-            this.apuestaMinima = 100
+            this.apuestaMinima = 500
       }
 
 
@@ -23,7 +23,7 @@ export class JuegoDados implements IJugar  {
 
     // fs.writeFileSync(`saldo.txt`, mostrarSaldo)
 
-    const apuesta = readlineSync.questionInt("Ingrese el monto de su apuesta: ");
+    const apuesta = readlineSync.questionInt("Ingrese el monto de su apuesta (Minimo $500): ");
 
 
     if (apuesta < this.apuestaMinima) {
@@ -55,12 +55,10 @@ export class JuegoDados implements IJugar  {
         // ganancia = apuesta * 36;
         console.log(`¡Adivinaste la suma exacta!`);
          this.usuario.sumarSaldo(apuesta)
-         this.usuario.mostrarSaldo()
 
       } else {
         console.log("No acertaste el número. Perdiste la apuesta.");
         this.usuario.restarSaldo(apuesta)
-        this.usuario.mostrarSaldo()
       }
     } else {
       const esPar = suma % 2 === 0;
@@ -68,19 +66,17 @@ export class JuegoDados implements IJugar  {
         // ganancia = apuesta * 2;
         console.log(`¡Adivinaste par/impar!`);
         this.usuario.sumarSaldo(apuesta)
-        this.usuario.mostrarSaldo()
 
       } else {
         console.log("No acertaste par/impar. Perdiste la apuesta.");
          this.usuario.restarSaldo(apuesta)
-        this.usuario.mostrarSaldo()
       }
     } 
 
-    let saldoTotal : number = this.usuario.getSaldo()
-    let saldoFinal : string = `Tu saldo final luego de jugar en los Craps es de ${saldoTotal}`
+    // let saldoTotal : number = this.usuario.getSaldo()
+    // let saldoFinal : string = `Tu saldo final luego de jugar en los Craps es de ${saldoTotal}`
 
-    fs.writeFileSync(`saldoFinalCraps.txt`,saldoFinal)
+    // fs.writeFileSync(`saldoFinalCraps.txt`,saldoFinal)
 
     // if (ganancia > 0) {
     //   console.log(`Ganaste $${ganancia}`);

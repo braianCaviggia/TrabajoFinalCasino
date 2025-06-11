@@ -2,12 +2,11 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.JuegoDados = void 0;
 var readlineSync = require("readline-sync");
-var fs = require("fs");
 var JuegoDados = /** @class */ (function () {
     function JuegoDados(usuario) {
         this.apuestaMinima = 500;
         this.usuario = usuario;
-        this.apuestaMinima = 100;
+        this.apuestaMinima = 500;
     }
     JuegoDados.prototype.apostar = function () {
         // const nombreJugador = readlineSync.question("Ingrese su nombre: ");
@@ -16,7 +15,7 @@ var JuegoDados = /** @class */ (function () {
         // let saldo : number= 100
         // let mostrarSaldo : string = `el saldo final es ${saldo}`
         // fs.writeFileSync(`saldo.txt`, mostrarSaldo)
-        var apuesta = readlineSync.questionInt("Ingrese el monto de su apuesta: ");
+        var apuesta = readlineSync.questionInt("Ingrese el monto de su apuesta (Minimo $500): ");
         if (apuesta < this.apuestaMinima) {
             console.log("La apuesta m\u00EDnima es ".concat(this.apuestaMinima, ". Apuesta no v\u00E1lida."));
             return;
@@ -42,12 +41,10 @@ var JuegoDados = /** @class */ (function () {
                 // ganancia = apuesta * 36;
                 console.log("\u00A1Adivinaste la suma exacta!");
                 this.usuario.sumarSaldo(apuesta);
-                this.usuario.mostrarSaldo();
             }
             else {
                 console.log("No acertaste el número. Perdiste la apuesta.");
                 this.usuario.restarSaldo(apuesta);
-                this.usuario.mostrarSaldo();
             }
         }
         else {
@@ -56,17 +53,15 @@ var JuegoDados = /** @class */ (function () {
                 // ganancia = apuesta * 2;
                 console.log("\u00A1Adivinaste par/impar!");
                 this.usuario.sumarSaldo(apuesta);
-                this.usuario.mostrarSaldo();
             }
             else {
                 console.log("No acertaste par/impar. Perdiste la apuesta.");
                 this.usuario.restarSaldo(apuesta);
-                this.usuario.mostrarSaldo();
             }
         }
-        var saldoTotal = this.usuario.getSaldo();
-        var saldoFinal = "Tu saldo final luego de jugar en los Craps es de ".concat(saldoTotal);
-        fs.writeFileSync("saldoFinalCraps.txt", saldoFinal);
+        // let saldoTotal : number = this.usuario.getSaldo()
+        // let saldoFinal : string = `Tu saldo final luego de jugar en los Craps es de ${saldoTotal}`
+        // fs.writeFileSync(`saldoFinalCraps.txt`,saldoFinal)
         // if (ganancia > 0) {
         //   console.log(`Ganaste $${ganancia}`);
         // } else {

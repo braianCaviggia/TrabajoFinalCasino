@@ -1,14 +1,17 @@
 import * as rs from "readline-sync"
+import * as fs from 'fs';
 import { fabricaJuegos } from "./fabricaJuegos";
 
 export class Usuario {
     private nombre: string 
     private edad: number 
-    private saldo:number = 2000
+    private saldo:number 
+    private bonoBienvenida : number = 2000
 
     constructor() {
         this.nombre = ""
         this.edad = 0
+        this.saldo = 2000
         
     }
 
@@ -37,7 +40,7 @@ export class Usuario {
     }
 
         bienvenida() {
-        console.log (`Bienvenido ${this.nombre}, tu bono de bienvenida es de $${this.saldo}.`)
+        console.log (`Bienvenido ${this.nombre}, tu bono de bienvenida es de ${this.bonoBienvenida}.`)
     }
 
 
@@ -58,11 +61,71 @@ if (elegirJuego) {  //si la opcion elegida es correcta...
 }
 }
 jugarJuego()
-        }  else {
-            console.log("Sos menor de edad, las apuestas están prohibidas para ti");
-            return;
-        }
+let salir = false
+
+ while(!salir) {
+    let mostrarMenu = console.log("VOLVIENDO AL MENU...")
+                      console.log("---MENÚ DE OPCIONES---")
+                      console.log("1. Mostrar menu de juegos")
+                      console.log("2. Consultar saldo")
+                      console.log("3. Salir del casino") 
+                      
+
+    let preguntarUsuario = rs.questionInt("Ingresa la opcion que desees: ")
+
+    switch(preguntarUsuario) {
+        case 1: jugarJuego()
+        break
+        case 2: this.mostrarSaldo()
+                jugarJuego()
+                break
+        case 3: salir = true
+            let saldoFinal : string = `Tu saldo final luego de jugar es de ${this.saldo}`
+            fs.writeFileSync(`saldoFinalUsuario.txt`,saldoFinal)
+            console.log(`Muchas gracias por jugar ${this.nombre}. Tu saldo final es de ${this.saldo} ¡Hasta la proxima!`)
+        break
+        default : console.log(`No esta disponible esa opcion. Te volvemos a mostrar las opciones para que vuelvas a elegir.`)
+        jugarJuego()
+        break
     }
+    }
+}
+}
+}
+
+
+
+
+    // mostrarMenu() {
+
+    // let mostrarMenu = console.log("---MENÚ DE OPCIONES---")
+    //                   console.log("1. Mostrar menu de juegos")
+    //                   console.log("2. Salir del casino")
+
+    // let preguntarUsuario = rs.questionInt("Ingresa la opcion que desees: ")
+
+    // switch(preguntarUsuario) {
+    //     case 1: jugarJuego()
+    // }
+
+
+    // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // public pedirEdad(){
     // try {
@@ -76,4 +139,3 @@ jugarJuego()
     //     this.mostrarSaldo()
     // }
     // }  
-}

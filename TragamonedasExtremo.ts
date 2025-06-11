@@ -7,12 +7,12 @@ export class TragamonedasExtremo extends Tragamonedas implements IJugar{
       protected montoMinimo: number
       constructor(usuario : Usuario) {
             super(usuario) 
-            this.montoMinimo = 5000
+            this.montoMinimo = 1500
       }
 
  apostar() {
 
-    let montoApuesta = rs.questionInt("Ingrese el monto de apuesta: ")
+    let montoApuesta = rs.questionInt("Ingrese el monto de apuesta (Minimo $1500): ")
 
     if (montoApuesta >= this.montoMinimo) {
     let girar = rs.question(`Ingrese "girar" para empezar a jugar: `).toLowerCase()
@@ -34,18 +34,16 @@ let resultado =   [tirarTragamoneda(this.simbolos),  //genero 3 veces un simbolo
     if (resultado[0] === resultado[1] && resultado[1] === resultado[2]) { //comparo los simbolos segun las posiciones 
         console.log("Ganaste")
         this.usuario.sumarSaldo(montoApuesta)
-        this.usuario.mostrarSaldo()
         
     } else {
         console.log("Perdiste")
         this.usuario.restarSaldo(montoApuesta)
-        this.usuario.mostrarSaldo()
     }
     } else {
         console.log("Tu giro no se hizo correctamente.")
     }
 } else {
-    console.log("El minimo de apuesta es de $2000. Si deseas apostar un valor menor, ingresa al Tragamonedas Basico (Opcion 3)")
+    console.log("El minimo de apuesta es de $1500. Si deseas apostar un valor menor, ingresa al Tragamonedas Basico (Opcion 3)")
 }
  }
 }
