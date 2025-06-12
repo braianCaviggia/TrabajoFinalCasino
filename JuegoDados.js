@@ -16,7 +16,7 @@ var JuegoDados = /** @class */ (function () {
         // let mostrarSaldo : string = `el saldo final es ${saldo}`
         // fs.writeFileSync(`saldo.txt`, mostrarSaldo)
         var apuesta = readlineSync.questionInt("Ingrese el monto de su apuesta (Minimo $500): ");
-        if (apuesta < this.apuestaMinima) {
+        if (apuesta < this.apuestaMinima || apuesta > this.usuario.getSaldo()) {
             console.log("La apuesta m\u00EDnima es ".concat(this.apuestaMinima, ". Apuesta no v\u00E1lida."));
             return;
         }

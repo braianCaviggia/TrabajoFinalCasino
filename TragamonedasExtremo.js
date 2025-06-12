@@ -28,7 +28,7 @@ var TragamonedasExtremo = /** @class */ (function (_super) {
     TragamonedasExtremo.prototype.apostar = function () {
         var _this = this;
         var montoApuesta = rs.questionInt("Ingrese el monto de apuesta (Minimo $1500): ");
-        if (montoApuesta >= this.montoMinimo) {
+        if (montoApuesta >= this.montoMinimo || montoApuesta > this.usuario.getSaldo()) { //deja apostar por mas que sea mayor plata que la que tiene el usuario
             var girar = rs.question("Ingrese \"girar\" para empezar a jugar: ").toLowerCase();
             if (girar === "girar") {
                 var tirarTragamoneda = function (simbol) {

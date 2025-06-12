@@ -14,8 +14,8 @@ var Ruleta = /** @class */ (function () {
     };
     Ruleta.prototype.apostar = function () {
         var montoApuesta = rs.questionInt("Ingrese el monto de su apuesta (Minimo $500): ");
-        if (montoApuesta < this.apuestaMinima) {
-            console.log("La apuesta m\u00EDnima es ".concat(this.apuestaMinima, ". Apuesta no v\u00E1lida."));
+        if (montoApuesta < this.apuestaMinima || montoApuesta > this.usuario.getSaldo()) {
+            console.log("Apuesta no v\u00E1lida.");
             return;
         }
         var altoBajo = rs.question("\u00BFQueres apostar \"Altos\" o \"Bajos\"? ").toLowerCase();

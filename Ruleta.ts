@@ -13,6 +13,7 @@ export class Ruleta implements IJugar{
         this.usuario = usuario
         this.apuestaMinima = 500
 
+
     }
 
     numeroAzar(min: 1, max: 36): number {
@@ -25,8 +26,8 @@ export class Ruleta implements IJugar{
          const montoApuesta = rs.questionInt("Ingrese el monto de su apuesta (Minimo $500): ");
         
         
-            if (montoApuesta < this.apuestaMinima) {
-              console.log(`La apuesta mínima es ${this.apuestaMinima}. Apuesta no válida.`);
+            if (montoApuesta < this.apuestaMinima || montoApuesta > this.usuario.getSaldo()) {
+              console.log(`Apuesta rechazada.`);
               return;
             }
 

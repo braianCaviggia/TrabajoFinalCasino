@@ -26,8 +26,8 @@ export class JuegoDados implements IJugar  {
     const apuesta = readlineSync.questionInt("Ingrese el monto de su apuesta (Minimo $500): ");
 
 
-    if (apuesta < this.apuestaMinima) {
-      console.log(`La apuesta mínima es ${this.apuestaMinima}. Apuesta no válida.`);
+    if (apuesta < this.apuestaMinima || apuesta > this.usuario.getSaldo()) {
+      console.log(`Apuesta rechazada.`);
       return;
     }
 

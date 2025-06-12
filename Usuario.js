@@ -28,9 +28,17 @@ var Usuario = /** @class */ (function () {
     };
     Usuario.prototype.pedirNombre = function () {
         this.nombre = rs.question("Ingresa tu nombre: ");
+        if (isNaN(Number(this.nombre))) {
+            // Esto se ejecuta si Number("texto") da NaN
+            // isNaN(NaN) da true y entra bien
+        }
+        else {
+            console.log("No se aceptan numeros");
+            this.pedirNombre();
+        }
     };
     Usuario.prototype.bienvenida = function () {
-        console.log("Bienvenido ".concat(this.nombre, ", tu bono de bienvenida es de ").concat(this.bonoBienvenida, "."));
+        console.log("Bienvenido ".concat(this.nombre, ", tu bono de bienvenida es de $").concat(this.bonoBienvenida, "."));
     };
     Usuario.prototype.pedirEdad = function () {
         var _this = this;
@@ -60,7 +68,7 @@ var Usuario = /** @class */ (function () {
                         break;
                     case 2:
                         this.mostrarSaldo();
-                        jugarJuego();
+                        // jugarJuego()
                         break;
                     case 3:
                         salir = true;
@@ -75,28 +83,10 @@ var Usuario = /** @class */ (function () {
                 }
             }
         }
+        else {
+            console.log("Sos menor de edad, no podes ingresar al casino");
+        }
     };
     return Usuario;
 }());
 exports.Usuario = Usuario;
-// mostrarMenu() {
-// let mostrarMenu = console.log("---MENÚ DE OPCIONES---")
-//                   console.log("1. Mostrar menu de juegos")
-//                   console.log("2. Salir del casino")
-// let preguntarUsuario = rs.questionInt("Ingresa la opcion que desees: ")
-// switch(preguntarUsuario) {
-//     case 1: jugarJuego()
-// }
-// }
-// public pedirEdad(){
-// try {
-//     this.edad = rs.questionInt("Ingresa tu edad: ");
-//     if (this.edad < 18) {
-//         throw new Error("Sos menor de edad, las apuestas están prohibidas para ti");
-//     }
-// } catch (error) {
-//     console.log(error.message); 
-// } if( this.edad >= 18){
-//     this.mostrarSaldo()
-// }
-// }  

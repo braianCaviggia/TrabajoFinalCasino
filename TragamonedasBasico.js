@@ -28,7 +28,7 @@ var TragamonedasBasico = /** @class */ (function (_super) {
     TragamonedasBasico.prototype.apostar = function () {
         var _this = this;
         var montoApuesta = rs.questionInt("Ingrese el monto de apuesta(Minimo $100 - Maximo $1500): ");
-        if (montoApuesta >= 100 && montoApuesta <= this.montoMaximo) {
+        if (montoApuesta >= 100 && montoApuesta <= this.montoMaximo && montoApuesta < this.usuario.getSaldo()) {
             var girar = rs.question("Ingrese \"girar\" para empezar a jugar: ").toLowerCase();
             if (girar === "girar") {
                 var tirarTragamoneda = function (simbol) {
