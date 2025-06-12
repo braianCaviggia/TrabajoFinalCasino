@@ -27,7 +27,7 @@ export class JuegoDados implements IJugar  {
 
 
     if (apuesta < this.apuestaMinima || apuesta > this.usuario.getSaldo()) {
-      console.log(`Apuesta rechazada.`);
+      console.log(`La apuesta mínima es ${this.apuestaMinima}. Apuesta no válida.`);
       return;
     }
 

@@ -5,7 +5,7 @@ var rs = require("readline-sync");
 var Ruleta = /** @class */ (function () {
     function Ruleta(usuario) {
         this.apuestaMinima = 500;
-        this.nombre = "Ruleta - Altos y bajos";
+        // this.nombre = "Ruleta - Altos y bajos"
         this.usuario = usuario;
         this.apuestaMinima = 500;
     }
@@ -15,7 +15,7 @@ var Ruleta = /** @class */ (function () {
     Ruleta.prototype.apostar = function () {
         var montoApuesta = rs.questionInt("Ingrese el monto de su apuesta (Minimo $500): ");
         if (montoApuesta < this.apuestaMinima || montoApuesta > this.usuario.getSaldo()) {
-            console.log("Apuesta no v\u00E1lida.");
+            console.log("Apuesta rechazada.");
             return;
         }
         var altoBajo = rs.question("\u00BFQueres apostar \"Altos\" o \"Bajos\"? ").toLowerCase();

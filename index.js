@@ -1,9 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var Usuario_1 = require("./Usuario");
-var usuario = new Usuario_1.Usuario();
-usuario.pedirNombre();
-usuario.pedirEdad();
+var Casino_1 = require("./Casino");
+// let usuario = new Usuario()
+var casino = new Casino_1.Casino();
+casino.EmpezarAJugarCasino();
+// usuario.pedirNombre()
+// usuario.pedirEdad()
 // let ruleta = new Ruleta()
 // ruleta.apostar()
 // let jugarJuego = () => {

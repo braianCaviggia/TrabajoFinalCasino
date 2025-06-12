@@ -2,11 +2,15 @@ import { Usuario } from "./Usuario";
 import { Ruleta } from "./Ruleta";
 import { Tragamonedas } from "./Tragamonedas";
 import { fabricaJuegos } from "./fabricaJuegos";
+import { Casino } from "./Casino";
 
-let usuario = new Usuario()
+// let usuario = new Usuario()
+let casino = new Casino()
 
-usuario.pedirNombre()
-usuario.pedirEdad()
+casino.EmpezarAJugarCasino()
+
+// usuario.pedirNombre()
+// usuario.pedirEdad()
 
 // let ruleta = new Ruleta()
 

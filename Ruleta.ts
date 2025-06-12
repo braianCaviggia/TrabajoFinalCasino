@@ -2,17 +2,17 @@ import * as rs from "readline-sync";
 import * as fs from 'fs';
 import { Usuario } from "./Usuario";
 import { IJugar } from "./IJugar";
+import { Casino } from "./Casino";
 
 export class Ruleta implements IJugar{
-    private nombre: string
+    // private nombre: string
     private usuario : Usuario
     private apuestaMinima : number = 500
 
     constructor (usuario : Usuario) {
-        this.nombre = "Ruleta - Altos y bajos"
+        // this.nombre = "Ruleta - Altos y bajos"
         this.usuario = usuario
         this.apuestaMinima = 500
-
 
     }
 

@@ -1,14 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Usuario = void 0;
-var rs = require("readline-sync");
-var fs = require("fs");
-var fabricaJuegos_1 = require("./fabricaJuegos");
 var Usuario = /** @class */ (function () {
+    // private bonoBienvenida : number = 2000
     function Usuario() {
-        this.bonoBienvenida = 2000;
         this.nombre = "";
-        this.edad = 0;
+        // this.edad = 0
         this.saldo = 2000;
     }
     Usuario.prototype.getSaldo = function () {
@@ -17,8 +14,14 @@ var Usuario = /** @class */ (function () {
     Usuario.prototype.SetSaldo = function (nuevoSaldo) {
         this.saldo = nuevoSaldo;
     };
+    Usuario.prototype.getNombre = function () {
+        return this.nombre;
+    };
+    // public getEdad() {
+    //     return this.edad
+    // }
     Usuario.prototype.mostrarSaldo = function () {
-        console.log("Tu saldo actual es de ".concat(this.saldo));
+        console.log("Tu saldo actual es de $".concat(this.saldo));
     };
     Usuario.prototype.sumarSaldo = function (montoApuesta) {
         this.saldo += montoApuesta;
@@ -26,67 +29,70 @@ var Usuario = /** @class */ (function () {
     Usuario.prototype.restarSaldo = function (montoApuesta) {
         this.saldo -= montoApuesta;
     };
-    Usuario.prototype.pedirNombre = function () {
-        this.nombre = rs.question("Ingresa tu nombre: ");
-        if (isNaN(Number(this.nombre))) {
-            // Esto se ejecuta si Number("texto") da NaN
-            // isNaN(NaN) da true y entra bien
-        }
-        else {
-            console.log("No se aceptan numeros");
-            this.pedirNombre();
-        }
-    };
-    Usuario.prototype.bienvenida = function () {
-        console.log("Bienvenido ".concat(this.nombre, ", tu bono de bienvenida es de $").concat(this.bonoBienvenida, "."));
-    };
-    Usuario.prototype.pedirEdad = function () {
-        var _this = this;
-        this.edad = rs.questionInt("Ingresa tu edad: ");
-        if (this.edad >= 18) {
-            this.bienvenida();
-            var jugarJuego = function () {
-                var juegos = new fabricaJuegos_1.fabricaJuegos(_this); //creo la fabrica de juegos en la variable "juegos"
-                juegos.mostrarJuegos(); //muestro los juegos disponibles
-                var elegirJuego = juegos.jugar(); //en "jugar" guardo el juego que elija el usuario
-                if (elegirJuego) { //si la opcion elegida es correcta...
-                    elegirJuego.apostar(); //ejecuta la funcion de apostar
-                }
-            };
-            jugarJuego();
-            var salir = false;
-            while (!salir) {
-                var mostrarMenu = console.log("VOLVIENDO AL MENU...");
-                console.log("---MENÚ DE OPCIONES---");
-                console.log("1. Mostrar menu de juegos");
-                console.log("2. Consultar saldo");
-                console.log("3. Salir del casino");
-                var preguntarUsuario = rs.questionInt("Ingresa la opcion que desees: ");
-                switch (preguntarUsuario) {
-                    case 1:
-                        jugarJuego();
-                        break;
-                    case 2:
-                        this.mostrarSaldo();
-                        // jugarJuego()
-                        break;
-                    case 3:
-                        salir = true;
-                        var saldoFinal = "Tu saldo final luego de jugar es de ".concat(this.saldo);
-                        fs.writeFileSync("saldoFinalUsuario.txt", saldoFinal);
-                        console.log("Muchas gracias por jugar ".concat(this.nombre, ". Tu saldo final es de ").concat(this.saldo, " \u00A1Hasta la proxima!"));
-                        break;
-                    default:
-                        console.log("No esta disponible esa opcion. Te volvemos a mostrar las opciones para que vuelvas a elegir.");
-                        jugarJuego();
-                        break;
-                }
-            }
-        }
-        else {
-            console.log("Sos menor de edad, no podes ingresar al casino");
-        }
-    };
     return Usuario;
 }());
 exports.Usuario = Usuario;
+//     bienvenida() {
+//     console.log (`Bienvenido ${this.nombre}, tu bono de bienvenida es de ${this.bonoBienvenida}.`)
+// }
+//     public pedirEdad() {
+//             this.edad = rs.questionInt ("Ingresa tu edad: ")
+//             if (this.edad >= 18) {
+//                this.bienvenida()
+//                let jugarJuego = () => {
+// let juegos = new fabricaJuegos(this) //creo la fabrica de juegos en la variable "juegos"
+// juegos.mostrarJuegos() //muestro los juegos disponibles
+// let elegirJuego = juegos.jugar() //en "jugar" guardo el juego que elija el usuario
+// if (elegirJuego) {  //si la opcion elegida es correcta...
+//     elegirJuego.apostar() //ejecuta la funcion de apostar
+// }
+// }
+// jugarJuego()
+// let salir = false
+//  while(!salir) {
+//     let mostrarMenu = console.log("VOLVIENDO AL MENU...")
+//                       console.log("---MENÚ DE OPCIONES---")
+//                       console.log("1. Mostrar menu de juegos")
+//                       console.log("2. Consultar saldo")
+//                       console.log("3. Salir del casino") 
+//     let preguntarUsuario = rs.questionInt("Ingresa la opcion que desees: ")
+//     switch(preguntarUsuario) {
+//         case 1: jugarJuego()
+//         break
+//         case 2: this.mostrarSaldo()
+//                 jugarJuego()
+//                 break
+//         case 3: salir = true
+//             let saldoFinal : string = `Tu saldo final luego de jugar es de ${this.saldo}`
+//             fs.writeFileSync(`saldoFinalUsuario.txt`,saldoFinal)
+//             console.log(`Muchas gracias por jugar ${this.nombre}. Tu saldo final es de ${this.saldo} ¡Hasta la proxima!`)
+//         break
+//         default : console.log(`No esta disponible esa opcion. Te volvemos a mostrar las opciones para que vuelvas a elegir.`)
+//         jugarJuego()
+//         break
+//     }
+//     }
+// }
+// }
+// }
+// mostrarMenu() {
+// let mostrarMenu = console.log("---MENÚ DE OPCIONES---")
+//                   console.log("1. Mostrar menu de juegos")
+//                   console.log("2. Salir del casino")
+// let preguntarUsuario = rs.questionInt("Ingresa la opcion que desees: ")
+// switch(preguntarUsuario) {
+//     case 1: jugarJuego()
+// }
+// }
+// public pedirEdad(){
+// try {
+//     this.edad = rs.questionInt("Ingresa tu edad: ");
+//     if (this.edad < 18) {
+//         throw new Error("Sos menor de edad, las apuestas están prohibidas para ti");
+//     }
+// } catch (error) {
+//     console.log(error.message); 
+// } if( this.edad >= 18){
+//     this.mostrarSaldo()
+// }
+// }  

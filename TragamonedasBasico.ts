@@ -42,7 +42,7 @@ let resultado =   [tirarTragamoneda(this.simbolos),  //genero 3 veces un simbolo
         console.log("Tu giro no se hizo correctamente.")
     }
 } else {
-    console.log("Apuesta rechazada")
+    console.log("El valor minimo de apuesta es 100 y el maximo de apuesta es de $1500. Si deseas apostar un valor mayor, ingresa al Tragamonedas Extremo (Opcion 4)")
 }
  }
 }
