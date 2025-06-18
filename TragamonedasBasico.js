@@ -21,14 +21,18 @@ var rs = require("readline-sync");
 var TragamonedasBasico = /** @class */ (function (_super) {
     __extends(TragamonedasBasico, _super);
     function TragamonedasBasico(usuario) {
-        var _this = _super.call(this, usuario) || this;
+        var _this = _super.call(this, usuario, "Tragamonedas Extremo") || this;
         _this.montoMaximo = 1500;
         return _this;
     }
+    TragamonedasBasico.prototype.reglas = function () {
+        console.log("\n==== Reglas del Tragamonedas B\u00E1sico ====\n- Apuesta m\u00EDnima: $100\n- Apuesta m\u00E1xima: $1500\nC\u00F3mo se juega:\n- Ingres\u00E1s el monto y escrib\u00EDs \"girar\" para comenzar.\n- Se muestran 3 s\u00EDmbolos al azar.\n- Si los 3 coinciden, gan\u00E1s.\n- Si no, perd\u00E9s la apuesta.\n\u00A1Prob\u00E1 tu suerte!\n        ");
+    };
     TragamonedasBasico.prototype.apostar = function () {
         var _this = this;
+        this.reglas();
         var montoApuesta = rs.questionInt("Ingrese el monto de apuesta(Minimo $100 - Maximo $1500): ");
-        if (montoApuesta >= 100 && montoApuesta <= this.montoMaximo && montoApuesta < this.usuario.getSaldo()) {
+        if (montoApuesta >= 100 && montoApuesta <= this.montoMaximo && montoApuesta < this.usuario.getMontoDepositado()) {
             var girar = rs.question("Ingrese \"girar\" para empezar a jugar: ").toLowerCase();
             if (girar === "girar") {
                 var tirarTragamoneda = function (simbol) {
@@ -42,11 +46,11 @@ var TragamonedasBasico = /** @class */ (function (_super) {
                 ];
                 console.log(resultado.join("/")); //muestro el resultado con join para que quede como string y no como array    
                 if (resultado[0] === resultado[1] && resultado[1] === resultado[2]) { //comparo los simbolos segun las posiciones 
-                    console.log("Ganaste");
+                    console.log("\n Ganaste");
                     this.usuario.sumarSaldo(montoApuesta);
                 }
                 else {
-                    console.log("Perdiste");
+                    console.log("\n Perdiste");
                     this.usuario.restarSaldo(montoApuesta);
                 }
             }
@@ -55,7 +59,7 @@ var TragamonedasBasico = /** @class */ (function (_super) {
             }
         }
         else {
-            console.log("El valor minimo de apuesta es 100 y el maximo de apuesta es de $1500. Si deseas apostar un valor mayor, ingresa al Tragamonedas Extremo (Opcion 4)");
+            console.log("Apuesta rechazada");
         }
     };
     return TragamonedasBasico;

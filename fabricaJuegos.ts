@@ -5,14 +5,17 @@ import { TragamonedasBasico } from "./TragamonedasBasico"
 import { TragamonedasExtremo } from "./TragamonedasExtremo"
 import { JuegoDados } from "./JuegoDados"
 import { Usuario } from "./Usuario"
+import { BienvenidaJuego } from "./BienvenidaJuego"
 
 
 export class fabricaJuegos {
 
      private usuario : Usuario
+     private bienvenidaJuego : BienvenidaJuego
 
      constructor(usuario : Usuario) {
         this.usuario = usuario
+        this.bienvenidaJuego = this.bienvenidaJuego
      }
 
 mostrarJuegos() {
@@ -24,35 +27,36 @@ mostrarJuegos() {
 }
 
 jugar() {
-    let elegir = rs.questionInt("Ingresa el numero del juego que desees: ")
+    let elegir = rs.questionInt("Ingresa el numero del juego que desees: " )
     switch (elegir) {
         case 1 : 
-            console.log("------INGRESANDO------") 
+            console.log("\n ------INGRESANDO------") 
             console.log("¡Ingresaste a la ruleta!") 
             console.log("------¡SUERTE!------") 
             return new Ruleta(this.usuario)
+            
 
         case 2 : 
-            console.log("------INGRESANDO------")
-            console.log("¡Ingresaste a Craps") 
+            console.log("\n ------INGRESANDO------")
+            console.log("¡Ingresaste a Craps!") 
             console.log("------¡SUERTE!------") 
             return new JuegoDados(this.usuario)
 
          case 3 :  
-            console.log("------INGRESANDO------")
+            console.log("\n ------INGRESANDO------")
             console.log("¡Ingresaste al Tragamonedas Basico!") 
             console.log("------¡SUERTE!------") 
             return new TragamonedasBasico(this.usuario)
 
         case 4 : 
-            console.log("------INGRESANDO------")
+            console.log("\n ------INGRESANDO------")
             console.log("¡Ingresaste al Tragamonedas Extremo!") 
             console.log("------¡SUERTE!------") 
             return new TragamonedasExtremo(this.usuario)
 
         
         
-        default : return console.log(`No existe juego en la opcion ${elegir}`)
+        default : return console.log(`\n No existe juego en la opcion ${elegir}`)
     }
 }
 }

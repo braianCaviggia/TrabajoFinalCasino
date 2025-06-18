@@ -3,18 +3,36 @@ import * as fs from 'fs';
 import { Usuario } from "./Usuario";
 import { IJugar } from "./IJugar";
 import { Casino } from "./Casino";
+import { BienvenidaJuego } from "./BienvenidaJuego";
 
-export class Ruleta implements IJugar{
-    // private nombre: string
+export class Ruleta extends BienvenidaJuego implements IJugar{
+
     private usuario : Usuario
     private apuestaMinima : number = 500
 
     constructor (usuario : Usuario) {
-        // this.nombre = "Ruleta - Altos y bajos"
+        super("Ruleta")
+
         this.usuario = usuario
         this.apuestaMinima = 500
 
     }
+
+    public reglas(): void {
+    console.log(`
+==== Reglas del Juego de Ruleta ====
+- Apuesta mínima: $500.
+- Solo podés apostar si tenés saldo suficiente.
+Opciones de apuesta:
+- "Altos": si creés que saldrá un número entre 20 y 36.
+- "Bajos": si creés que saldrá un número entre 1 y 19.
+Cómo se juega:
+- La ruleta genera un número al azar entre 1 y 36.
+- Si acertás la categoría (alto o bajo), ganás el monto apostado.
+- Si no acertás, lo perdés.
+¡Buena suerte!
+`);
+}
 
     numeroAzar(min: 1, max: 36): number {
         return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -22,11 +40,12 @@ export class Ruleta implements IJugar{
 
 
     apostar() {
+        this.reglas()
 
          const montoApuesta = rs.questionInt("Ingrese el monto de su apuesta (Minimo $500): ");
         
         
-            if (montoApuesta < this.apuestaMinima || montoApuesta > this.usuario.getSaldo()) {
+            if (montoApuesta < this.apuestaMinima || montoApuesta > this.usuario.getMontoDepositado()) {
               console.log(`Apuesta rechazada.`);
               return;
             }
@@ -36,18 +55,18 @@ export class Ruleta implements IJugar{
 
          if (altoBajo === "bajos" || altoBajo === "bajo") {
             if (numero >= 1 && numero <= 19) {
-                console.log(`Ganaste, salió el numero ${numero}`)
+                console.log(`\n Ganaste, salió el numero ${numero}`)
                  this.usuario.sumarSaldo(montoApuesta)
             } else if (numero >19) {
-                console.log(`Perdiste, salió el numero ${numero} y es mayor.`)
+                console.log(`\n Perdiste, salió el numero ${numero} y es mayor.`)
                     this.usuario.restarSaldo(montoApuesta)
             }     
         } else if (altoBajo === "altos" || altoBajo === "alto" ) { 
             if (numero >=20 && numero <=36) {
-                console.log(`Ganaste, salió el numero ${numero}`)
+                console.log(`\n Ganaste, salió el numero ${numero}`)
                  this.usuario.sumarSaldo(montoApuesta)
             } else if (numero < 19) {
-                console.log(`Perdiste, salió el numero ${numero} y es menor.`)
+                console.log(`\n Perdiste, salió el numero ${numero} y es menor.`)
                     this.usuario.restarSaldo(montoApuesta)
             }
         } else {
