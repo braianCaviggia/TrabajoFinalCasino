@@ -10,8 +10,6 @@ var Usuario = /** @class */ (function () {
     }
     Usuario.prototype.depositarMonto = function () {
         this.montoDepositado = rs.questionInt("Ingrese el monto que desees depositar (Dinero disponible en tu cuenta bancaria: $".concat(this.saldo, "): "));
-        // this.montoDepositado + 2000
-        // this.saldo -= this.montoDepositado 
     };
     Usuario.prototype.setMontoDepositado = function (bono) {
         this.montoDepositado += bono;

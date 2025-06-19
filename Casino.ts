@@ -19,23 +19,24 @@ export class Casino {
     }
 
     public EmpezarAJugarCasino() {
-    try{
             let nombre = rs.question("Ingresa tu nombre: ")
         while (!isNaN(Number(nombre))) {
             console.log("No se aceptan números");
             nombre = rs.question("Ingresa tu nombre: ");
         }
           let edad = rs.questionInt ("Ingresa tu edad: ")
-            if (edad >= 18) {
+            if (edad < 18) { 
+              console.log("Sos menor de edad, no podes ingresar al casino")
+            } else {
               console.log(`Bienvenido ${nombre}. Tu bono de bienvenida es de $${this.bonoBienvenida}.`)
               this.usuario = new Usuario()
               this.usuario.depositarMonto() 
               this.usuario.setMontoDepositado(this.bonoBienvenida)
-              if (this.usuario.getMontoDepositado() <= this.usuario.getSaldo()){
+              if (this.usuario.getMontoDepositado() <= this.usuario.getSaldo() && this.usuario.getMontoDepositado() > 0){
            } else {
             console.log("Dinero insuficiente en tu cuenta bancaria")
             return
-           }
+           }  
            
                let jugarJuego = () => {
 let juegos = new fabricaJuegos(this.usuario) //creo la fabrica de juegos en la variable "juegos"
@@ -61,7 +62,7 @@ let salir = false
                       
 
     let preguntarUsuario = rs.questionInt("Ingresa la opcion que desees: ")
-
+try {
     switch(preguntarUsuario) {
         case 1: jugarJuego()
         break
@@ -72,16 +73,14 @@ let salir = false
             fs.writeFileSync(`saldoFinalUsuario.txt`,saldoFinal)
             console.log(`Muchas gracias por jugar ${nombre}. Tu saldo final es de $${this.usuario.getMontoDepositado()} ¡Hasta la proxima!`)
         break
-        default : console.log(`No esta disponible esa opcion. Te volvemos a mostrar las opciones para que vuelvas a elegir.`)
-        jugarJuego()
-        break
+
+        default :  throw new Error(`No esta disponible esa opcion. Te volvemos a mostrar las opciones para que vuelvas a elegir.`)
     }
-    }
-} else {
-    console.log("Sos menor de edad, no podes ingresar al casino")
+       
+    } catch(error) {
+        console.log(error.message)
+        
+    } 
+} 
 }
-} catch(error:any) {
-    console.log("Ocurrio un error al ingresar al casino")
-}
-    }
-}
+}}
