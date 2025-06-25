@@ -35,7 +35,7 @@ Cómo se juega:
 }
 
     numeroAzar(min: 1, max: 36): number {
-        return Math.floor(Math.random() * (max - min + 1)) + min;
+        return Math.floor(Math.random() * (max - min + 1)) + min; //devuelve numero entero al azar
 }
 
 

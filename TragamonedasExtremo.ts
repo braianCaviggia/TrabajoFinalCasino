@@ -39,12 +39,10 @@ Cómo se juega:
 
     if (girar === "girar") {
          let tirarTragamoneda = (simbol:string[]) => {
-        return simbol[Math.floor(Math.random() * this.simbolos.length)]; //math floor: redondea numero decimal
-                                                                         //random: genera numero del 0 al 1
-                                                                         // * length: multiplico el numero por longitud del array
+        return simbol[Math.floor(Math.random() * this.simbolos.length)]; //elige un simbolo al azar
    }
         
-let resultado =   [tirarTragamoneda(this.simbolos),  //genero 3 veces un simbolo en un array y lo guardo en resultado
+let resultado =   [tirarTragamoneda(this.simbolos),  //genero 5 veces un simbolo en un array y lo guardo en resultado
                     tirarTragamoneda(this.simbolos),
                     tirarTragamoneda(this.simbolos),
                     tirarTragamoneda(this.simbolos),
