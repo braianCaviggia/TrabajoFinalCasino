@@ -2,7 +2,6 @@ import { Usuario } from "./Usuario";
 import * as rs from "readline-sync"
 import * as fs from 'fs';
 import { fabricaJuegos } from "./fabricaJuegos";
-import { error } from "console";
 
 export class Casino {
 
@@ -13,7 +12,7 @@ export class Casino {
         return this.bonoBienvenida
     }
 
-    public setBono() {
+    public aplicarBono() {
         this.usuario.sumarSaldo(this.bonoBienvenida)
     }
 
@@ -27,10 +26,10 @@ export class Casino {
             if (edad < 18) { 
               console.log("Sos menor de edad, no podes ingresar al casino")
             } else {
-              console.log(`Bienvenido ${nombre}. Tu bono de bienvenida es de $${this.bonoBienvenida}.`)
+              console.log(`Bienvenido ${nombre} a "Casino Excalibur". Tu bono de bienvenida es de $${this.bonoBienvenida}.`)
               this.usuario = new Usuario() //creamos el usuario una vez se loguee
               this.usuario.depositarMonto()  //deosita el monto
-              this.usuario.setMontoDepositado(this.bonoBienvenida) //se le suma el bono
+              this.usuario.sumarMontoDepositado(this.bonoBienvenida) //se le suma el bono
               if (this.usuario.getMontoDepositado() <= this.usuario.getSaldo() && this.usuario.getMontoDepositado() > 0){
            } else { //verifica que lo depositado sea correcto
             console.log("Dinero insuficiente en tu cuenta bancaria")

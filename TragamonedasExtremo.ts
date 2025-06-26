@@ -26,7 +26,9 @@ Cómo se juega:
 
  apostar() {
 
+    this.mostrarBienvenida()
     this.reglas()
+    
 
     let montoApuesta = rs.questionInt("Ingrese el monto de apuesta (Minimo $1501): ")
 

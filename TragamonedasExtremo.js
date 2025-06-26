@@ -30,6 +30,7 @@ var TragamonedasExtremo = /** @class */ (function (_super) {
     };
     TragamonedasExtremo.prototype.apostar = function () {
         var _this = this;
+        this.mostrarBienvenida();
         this.reglas();
         var montoApuesta = rs.questionInt("Ingrese el monto de apuesta (Minimo $1501): ");
         if (montoApuesta < this.montoMinimo || montoApuesta > this.usuario.getMontoDepositado()) {
@@ -39,11 +40,9 @@ var TragamonedasExtremo = /** @class */ (function (_super) {
         var girar = rs.question("Ingrese \"girar\" para empezar a jugar: ").toLowerCase();
         if (girar === "girar") {
             var tirarTragamoneda = function (simbol) {
-                return simbol[Math.floor(Math.random() * _this.simbolos.length)]; //math floor: redondea numero decimal
-                //random: genera numero del 0 al 1
-                // * length: multiplico el numero por longitud del array
+                return simbol[Math.floor(Math.random() * _this.simbolos.length)]; //elige un simbolo al azar
             };
-            var resultado = [tirarTragamoneda(this.simbolos), //genero 3 veces un simbolo en un array y lo guardo en resultado
+            var resultado = [tirarTragamoneda(this.simbolos), //genero 5 veces un simbolo en un array y lo guardo en resultado
                 tirarTragamoneda(this.simbolos),
                 tirarTragamoneda(this.simbolos),
                 tirarTragamoneda(this.simbolos),

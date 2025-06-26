@@ -21,7 +21,7 @@ var rs = require("readline-sync");
 var TragamonedasBasico = /** @class */ (function (_super) {
     __extends(TragamonedasBasico, _super);
     function TragamonedasBasico(usuario) {
-        var _this = _super.call(this, usuario, "Tragamonedas Extremo") || this;
+        var _this = _super.call(this, usuario, "Tragamonedas Basico") || this;
         _this.montoMaximo = 1500;
         return _this;
     }
@@ -30,6 +30,7 @@ var TragamonedasBasico = /** @class */ (function (_super) {
     };
     TragamonedasBasico.prototype.apostar = function () {
         var _this = this;
+        this.mostrarBienvenida();
         this.reglas();
         var montoApuesta = rs.questionInt("Ingrese el monto de apuesta(Minimo $100 - Maximo $1500): ");
         if (montoApuesta >= 100 && montoApuesta <= this.montoMaximo && montoApuesta < this.usuario.getMontoDepositado()) {

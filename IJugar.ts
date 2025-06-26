@@ -1,3 +1,3 @@
 export interface IJugar {
-    apostar()
+    apostar() : void
 }

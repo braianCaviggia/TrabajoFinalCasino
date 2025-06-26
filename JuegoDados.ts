@@ -1,5 +1,4 @@
 import * as readlineSync from "readline-sync";
-import * as fs from 'fs';
 import { Usuario } from "./Usuario";
 import { IJugar } from "./IJugar";
 import { BienvenidaJuego } from "./BienvenidaJuego";
@@ -10,12 +9,11 @@ export class JuegoDados extends BienvenidaJuego implements IJugar   {
   constructor(usuario : Usuario) {
     super("Craps")
             this.usuario = usuario
-            this.apuestaMinima = 500
       }
 
       public reglas(): void {
  console.log( ` 
-==== Reglas del Juego de Dados ====
+==== Reglas del Juego de Craps ====
 - Apuesta mínima: $500.
 - Solo podés apostar si tenés saldo suficiente.
 Opciones de apuesta:
@@ -36,8 +34,6 @@ Si perdés: se descuenta del saldo.
 
   public apostar(): void {
     this.mostrarBienvenida()
-
-
     this.reglas()
 
     const apuesta = readlineSync.questionInt("Ingrese el monto de su apuesta (Minimo $500): ");
@@ -54,6 +50,10 @@ Si perdés: se descuenta del saldo.
     let valorApuesta: number | "par" | "impar";
     if (tipoApuesta === "numero") {
       valorApuesta = readlineSync.questionInt("Elegi un numero del 2 al 12: ");
+      if(valorApuesta < 2 || valorApuesta > 12) {
+        console.log("Numero fuera de rango.")
+        return
+      }
     } else if (tipoApuesta === "par" || tipoApuesta === "impar") {
       valorApuesta = tipoApuesta;
     } else {
@@ -89,6 +89,6 @@ Si perdés: se descuenta del saldo.
          this.usuario.restarSaldo(apuesta)
       }
     } 
-    console.log(" Gracias por jugar");
+    console.log(" Gracias por jugar Craps");
   }
 }

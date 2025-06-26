@@ -1,12 +1,8 @@
 import * as rs from "readline-sync"
-import * as fs from 'fs';
-import { fabricaJuegos } from "./fabricaJuegos";
-import { Casino } from "./Casino";
 
 export class Usuario {
     protected nombre: string
     protected saldo:number 
-    protected casino : Casino
     protected montoDepositado: number
 
     constructor() {
@@ -19,7 +15,7 @@ export class Usuario {
     }
     
 
-    public setMontoDepositado(bono) {
+    public sumarMontoDepositado(bono) {
         this.montoDepositado += bono 
     }
 

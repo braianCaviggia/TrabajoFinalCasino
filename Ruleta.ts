@@ -1,8 +1,6 @@
 import * as rs from "readline-sync";
-import * as fs from 'fs';
 import { Usuario } from "./Usuario";
 import { IJugar } from "./IJugar";
-import { Casino } from "./Casino";
 import { BienvenidaJuego } from "./BienvenidaJuego";
 
 export class Ruleta extends BienvenidaJuego implements IJugar{
@@ -17,6 +15,7 @@ export class Ruleta extends BienvenidaJuego implements IJugar{
         this.apuestaMinima = 500
 
     }
+
 
     public reglas(): void {
     console.log(`
@@ -40,7 +39,9 @@ Cómo se juega:
 
 
     apostar() {
+        this.mostrarBienvenida()
         this.reglas()
+        
 
          const montoApuesta = rs.questionInt("Ingrese el monto de su apuesta (Minimo $500): ");
         

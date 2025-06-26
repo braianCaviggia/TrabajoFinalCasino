@@ -2,12 +2,14 @@ import { IJugar } from "./IJugar"
 import { Tragamonedas } from "./Tragamonedas"
 import { Usuario } from "./Usuario"
 import * as rs from "readline-sync"
+import { BienvenidaJuego } from "./BienvenidaJuego"
 
 export class TragamonedasBasico extends Tragamonedas implements IJugar{
           protected montoMaximo: number
       constructor(usuario: Usuario) {
-            super(usuario, "Tragamonedas Extremo") 
+            super(usuario, "Tragamonedas Basico") 
             this.montoMaximo = 1500
+            this.montoMinimo = 100
       }
 
       public reglas(): void {
@@ -26,11 +28,13 @@ Cómo se juega:
 
  apostar() {
 
+    this.mostrarBienvenida()
     this.reglas()
+    
 
     let montoApuesta = rs.questionInt("Ingrese el monto de apuesta(Minimo $100 - Maximo $1500): ")
 
-    if (montoApuesta >= 100 && montoApuesta <= this.montoMaximo && montoApuesta < this.usuario.getMontoDepositado()) {
+    if (montoApuesta >= this.montoMinimo && montoApuesta <= this.montoMaximo && montoApuesta < this.usuario.getMontoDepositado()) {
     let girar = rs.question(`Ingrese "girar" para empezar a jugar: `).toLowerCase()
 
     if (girar === "girar") {

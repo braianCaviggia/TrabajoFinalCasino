@@ -1,25 +1,19 @@
 import { Ruleta } from "./Ruleta"
-import { Tragamonedas } from "./Tragamonedas"
 import * as rs from "readline-sync"
 import { TragamonedasBasico } from "./TragamonedasBasico"
 import { TragamonedasExtremo } from "./TragamonedasExtremo"
 import { JuegoDados } from "./JuegoDados"
 import { Usuario } from "./Usuario"
-import { BienvenidaJuego } from "./BienvenidaJuego"
-
 
 export class fabricaJuegos {
 
      private usuario : Usuario
-     private bienvenidaJuego : BienvenidaJuego
 
      constructor(usuario : Usuario) {
         this.usuario = usuario
-        this.bienvenidaJuego = this.bienvenidaJuego
      }
 
 mostrarJuegos() {
-    let listaJuegos =
                     console.log("Opcion 1: Ruleta") 
                     console.log("Opcion 2: Craps")
                     console.log("Opcion 3: Tragamonedas Basico")

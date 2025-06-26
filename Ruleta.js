@@ -31,9 +31,10 @@ var Ruleta = /** @class */ (function (_super) {
         console.log("\n==== Reglas del Juego de Ruleta ====\n- Apuesta m\u00EDnima: $500.\n- Solo pod\u00E9s apostar si ten\u00E9s saldo suficiente.\nOpciones de apuesta:\n- \"Altos\": si cre\u00E9s que saldr\u00E1 un n\u00FAmero entre 20 y 36.\n- \"Bajos\": si cre\u00E9s que saldr\u00E1 un n\u00FAmero entre 1 y 19.\nC\u00F3mo se juega:\n- La ruleta genera un n\u00FAmero al azar entre 1 y 36.\n- Si acert\u00E1s la categor\u00EDa (alto o bajo), gan\u00E1s el monto apostado.\n- Si no acert\u00E1s, lo perd\u00E9s.\n\u00A1Buena suerte!\n");
     };
     Ruleta.prototype.numeroAzar = function (min, max) {
-        return Math.floor(Math.random() * (max - min + 1)) + min;
+        return Math.floor(Math.random() * (max - min + 1)) + min; //devuelve numero entero al azar
     };
     Ruleta.prototype.apostar = function () {
+        this.mostrarBienvenida();
         this.reglas();
         var montoApuesta = rs.questionInt("Ingrese el monto de su apuesta (Minimo $500): ");
         if (montoApuesta < this.apuestaMinima || montoApuesta > this.usuario.getMontoDepositado()) {

@@ -1,10 +1,3 @@
-import { IJugar } from "./IJugar";
-import { JuegoDados } from "./JuegoDados";
-import { TragamonedasBasico } from "./TragamonedasBasico";
-import { TragamonedasExtremo } from "./TragamonedasExtremo";
-import { Tragamonedas } from "./Tragamonedas";
-import { Ruleta } from "./Ruleta";
-
 export abstract class BienvenidaJuego {
     protected nombreJuego: string;
     constructor(nombreJuego: string) {

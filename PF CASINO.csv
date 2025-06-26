@@ -1,0 +1,25 @@
+﻿#ID;Clase;Método;Descripción prueba;Entrada;Resultado esperado;Estado
+PF01;Casino;EmpezarAJugarCasino;Validar ingreso con nombre no numérico;Nombre: 'Braian';Aceptar y continuar;OK
+PF02;Casino;EmpezarAJugarCasino;Rechazar ingreso si edad < 18;Edad: 17;Mostrar mensaje de menor de edad y no ingresar;OK
+PF03;Casino;setBono;Sumar bono de bienvenida al saldo;Saldo inicial: 0;Saldo aumentado en 2000;OK
+PF04;BienvenidaJuego;mostrarBienvenida;Mostrar mensaje de bienvenida correcto;Numero juego: 01 'Ruleta';Mensaje en consola con nombre de juego;OK
+PF05;fabricaJuegos;mostrarJuegos;Mostrar listado de juegos disponibles;N/A;Lista de 4 juegos mostrada;OK
+PF06;fabricaJuegos;jugar;Seleccionar juego válido por número;Input: 1;Retorna instancia de Ruleta;OK
+PF07;fabricaJuegos;jugar;Seleccionar juego inválido;Input: 9;Mensaje error y no retorna juego;OK
+PF08;IJugar;apostar;Método debe ser implementado en clases que usan la interfaz;N/A;Método definido;OK
+PF09;JuegoDados;apostar;Rechazar apuesta menor a 500;Apuesta: 400;Mensaje de rechazo;OK
+PF10;JuegoDados;apostar;Ganar si se acierta número exacto;Apuesta: 500, apuesta número: suma dados;Saldo incrementado;OK
+PF11;JuegoDados;apostar;Ganar si se acierta par/impar;Apuesta: 500, apuesta tipo: 'par', suma es par;Saldo incrementado;OK
+PF12;Ruleta;apostar;Rechazar apuesta menor al minimo (500);Apuesta: 400;Mensaje de rechazo;OK
+PF13;Ruleta;apostar;Ganar apostando 'altos' y número >=20;Apuesta: 500, apuesta: 'altos', número=30;Saldo incrementado;OK
+PF14;Ruleta;apostar;Perder apostando 'bajos' y número >19;Apuesta: 500, apuesta: 'bajos', número=25;Saldo decrementado;OK
+PF15;Tragamonedas;constructor;Inicializar simbolos y usuario correctamente;Usuario instanciado;Atributos inicializados;OK
+PF16;TragamonedasBasico;apostar;Rechazar apuesta fuera de rango;Apuesta: 50;Mensaje rechazo;OK
+PF17;TragamonedasBasico;apostar;Ganar si los 3 símbolos coinciden;Apuesta: 100, símbolos iguales;Saldo incrementado;OK
+PF18;TragamonedasBasico;apostar;Perder si no coinciden símbolos;Apuesta: 100, símbolos diferentes;Saldo decrementado;OK
+PF19;TragamonedasExtremo;apostar;Rechazar apuesta menor a 1501;Apuesta: 1000;Mensaje rechazo;OK
+PF20;TragamonedasExtremo;apostar;Ganar si los 5 símbolos coinciden;Apuesta: 2000, símbolos iguales;Saldo incrementado x3;OK
+PF21;TragamonedasExtremo;apostar;Perder si no coinciden símbolos;Apuesta: 2000, símbolos diferentes;Saldo decrementado;OK
+PF22;Usuario;depositarMonto;Aceptar monto válido menor a saldo;Saldo: 200000, monto: 5000;montoDepositado = 5000;OK
+PF23;Usuario;setMontoDepositado;Sumar bono al monto depositado;bono=2000;montoDepositado incrementado;OK
+PF24;Usuario;sumarSaldo / restarSaldo;Actualizar saldo correctamente;saldo inicial=1000, modificar 500;saldo ajustado;OK
